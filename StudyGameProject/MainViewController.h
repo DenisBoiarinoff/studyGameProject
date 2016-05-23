@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  StudyGameProject
 //
 //  Created by Rhinoda3 on 23.05.16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MainViewController : UIViewController
 
 @end
-
