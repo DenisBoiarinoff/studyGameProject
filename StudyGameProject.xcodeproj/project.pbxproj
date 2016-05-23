@@ -15,6 +15,8 @@
 		5990774F1CF2F0C00057581D /* StudyGameProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5990774E1CF2F0C00057581D /* StudyGameProjectTests.m */; };
 		5990775C1CF2FFA90057581D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5990775A1CF2FFA90057581D /* MainViewController.m */; };
 		5990775D1CF2FFA90057581D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5990775B1CF2FFA90057581D /* MainViewController.xib */; };
+		599077621CF3099C0057581D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599077601CF3099C0057581D /* GameViewController.m */; };
+		599077631CF3099C0057581D /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599077611CF3099C0057581D /* GameViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,9 @@
 		599077591CF2FFA90057581D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		5990775A1CF2FFA90057581D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		5990775B1CF2FFA90057581D /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		5990775F1CF3099C0057581D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		599077601CF3099C0057581D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		599077611CF3099C0057581D /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +99,9 @@
 				599077451CF2F0BF0057581D /* Info.plist */,
 				5990773D1CF2F0BD0057581D /* StudyGameProject.xcdatamodeld */,
 				599077311CF2F0BA0057581D /* Supporting Files */,
+				5990775F1CF3099C0057581D /* GameViewController.h */,
+				599077601CF3099C0057581D /* GameViewController.m */,
+				599077611CF3099C0057581D /* GameViewController.xib */,
 			);
 			path = StudyGameProject;
 			sourceTree = "<group>";
@@ -202,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				599077631CF3099C0057581D /* GameViewController.xib in Resources */,
 				599077441CF2F0BE0057581D /* LaunchScreen.storyboard in Resources */,
 				5990775D1CF2FFA90057581D /* MainViewController.xib in Resources */,
 				599077411CF2F0BE0057581D /* Assets.xcassets in Resources */,
@@ -222,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				599077621CF3099C0057581D /* GameViewController.m in Sources */,
 				599077361CF2F0BB0057581D /* AppDelegate.m in Sources */,
 				599077331CF2F0BB0057581D /* main.m in Sources */,
 				5990773F1CF2F0BD0057581D /* StudyGameProject.xcdatamodeld in Sources */,

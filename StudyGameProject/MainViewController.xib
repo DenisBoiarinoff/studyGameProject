@@ -14,7 +14,15 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="0.74405653217470769" blue="0.90277474081967168" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eER-54-Qh6">
+                    <rect key="frame" x="251" y="168" width="99" height="58"/>
+                    <state key="normal" title="To Game"/>
+                    <connections>
+                        <action selector="toGameView:" destination="-1" eventType="touchUpInside" id="5LY-i4-zGR"/>
+                    </connections>
+                </button>
+            </subviews>
         </view>
     </objects>
 </document>

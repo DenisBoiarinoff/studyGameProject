@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class GameViewController;
+
 @interface MainViewController : UIViewController
+
+- (IBAction)toGameView:(id)sender;
+
+@property (nonatomic, retain) GameViewController *gameViewController;
 
 @end
