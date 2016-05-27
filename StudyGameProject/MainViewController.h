@@ -14,6 +14,14 @@
 
 - (IBAction)toGameView:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIImageView *fontImageView;
+
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (strong, nonatomic) IBOutlet UIButton *playBtn;
+@property (strong, nonatomic) IBOutlet UIButton *hawToPlayBtn;
+@property (strong, nonatomic) IBOutlet UIButton *StoreBtn;
+
 @property (nonatomic, retain) GameViewController *gameViewController;
 
 @end
