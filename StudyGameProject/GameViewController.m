@@ -11,6 +11,7 @@
 #import "Task.h"
 #import "TaskManager.h"
 #import "UIColor+ColorFromHex.h"
+#import "ViewCellStack.h"
 
 @interface GameViewController ()
 
@@ -25,6 +26,8 @@
 @property NSMutableString *possibleAnswer;
 
 @property NSNumber *coins;
+
+@property ViewCellStack *cellStack;
 
 @end
 
@@ -42,6 +45,8 @@ static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGame
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	self.cellStack = [[ViewCellStack alloc] init];
 
 	self.lettersCellCollectionView.backgroundColor =  [UIColor colorwithHexString:@"FFFFFF" alpha:0];
 
@@ -127,6 +132,7 @@ static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGame
 		int helpIndex = (int)[self.dataArray count] / 2 - 1;
 		int backIndex = (int)[self.dataArray count] - 1;
 		if ((indexPath.row != helpIndex ) && (indexPath.row != backIndex)) {
+			[self.cellStack push:cell];
 			NSMutableString *selectedLetter = [[NSMutableString alloc] initWithString:[cell.letter text]];
 			self.possibleAnswer = [[self.possibleAnswer  stringByAppendingString:selectedLetter] mutableCopy];
 			[cell setHidden:YES];
@@ -175,6 +181,9 @@ static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGame
 			[lastFullView setText:@" "];
 			lastFullView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:inputBtnImgUrl]];
 		}
+
+		LetterCollectionViewCell *popCell =	(LetterCollectionViewCell *)[self.cellStack pop];
+		[popCell setHidden:NO];
 	}
 }
 

@@ -17,6 +17,7 @@
 		590808021CF6FEB2003536B4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 590807FE1CF6FEB2003536B4 /* Default.png */; };
 		590808031CF6FEB2003536B4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 590807FF1CF6FEB2003536B4 /* Default@2x.png */; };
 		590808051CF6FF10003536B4 /* bg_level_completed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 590808041CF6FF10003536B4 /* bg_level_completed@2x.png */; };
+		591BCC661CFC4C63006A27F9 /* ViewCellStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BCC651CFC4C63006A27F9 /* ViewCellStack.m */; };
 		59242E891CF435E200D4C903 /* LetterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59242E871CF435E200D4C903 /* LetterCollectionViewCell.m */; };
 		59242E8A1CF435E200D4C903 /* LetterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59242E881CF435E200D4C903 /* LetterCollectionViewCell.xib */; };
 		59242E8D1CF4587400D4C903 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 59242E8C1CF4587400D4C903 /* Task.m */; };
@@ -61,6 +62,8 @@
 		590807FE1CF6FEB2003536B4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		590807FF1CF6FEB2003536B4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		590808041CF6FF10003536B4 /* bg_level_completed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_level_completed@2x.png"; sourceTree = "<group>"; };
+		591BCC641CFC4C05006A27F9 /* ViewCellStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellStack.h; sourceTree = "<group>"; };
+		591BCC651CFC4C63006A27F9 /* ViewCellStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellStack.m; sourceTree = "<group>"; };
 		59242E861CF435E200D4C903 /* LetterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterCollectionViewCell.h; sourceTree = "<group>"; };
 		59242E871CF435E200D4C903 /* LetterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterCollectionViewCell.m; sourceTree = "<group>"; };
 		59242E881CF435E200D4C903 /* LetterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LetterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				59B35D021CF550280078B56A /* TaskManager.m */,
 				59015E0B1CF7FC8C0079B215 /* UIColor+ColorFromHex.h */,
 				59015E0C1CF7FC8C0079B215 /* UIColor+ColorFromHex.m */,
+				591BCC641CFC4C05006A27F9 /* ViewCellStack.h */,
+				591BCC651CFC4C63006A27F9 /* ViewCellStack.m */,
 			);
 			path = StudyGameProject;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				59B35D031CF550280078B56A /* TaskManager.m in Sources */,
 				5990775C1CF2FFA90057581D /* MainViewController.m in Sources */,
 				59015E0D1CF7FC8C0079B215 /* UIColor+ColorFromHex.m in Sources */,
+				591BCC661CFC4C63006A27F9 /* ViewCellStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
