@@ -23,6 +23,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *backBtn;
 - (IBAction)toMainView:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *coinsBtn;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
 //@property NSArray *taskArray;
 
 @end

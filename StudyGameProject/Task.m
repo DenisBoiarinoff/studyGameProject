@@ -40,11 +40,13 @@
 //	return self;
 }
 
-- (void) verifyAnswer:(NSString *) posibleAnswer{
+- (bool) verifyAnswer:(NSString *) posibleAnswer{
 	if ([_answer isEqualToString:posibleAnswer]) {
 		_isSolved = TRUE;
 		[self notifyObserversAboutSolving];
 	}
+
+	return _isSolved;
 }
 
 - (void)notifyObserversAboutSolving {

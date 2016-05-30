@@ -24,16 +24,29 @@
 
 @property NSMutableString *possibleAnswer;
 
+@property NSNumber *coins;
+
 @end
 
 @implementation GameViewController
 
 static NSString *cellIdentifier = @"LatterCollectionViewCell";
 
+const int numberOfLetter = 16;
+
+const int taskCoast = 10;
+
+static NSString *inputBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/StudyGameProject/btn_input@2x.png";
+
+static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/StudyGameProject/btn_letter@2x.png";
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	self.lettersCellCollectionView.backgroundColor =  [UIColor colorwithHexString:@"FFFFFF" alpha:0];
+
+	self.coins = [NSNumber numberWithInt:0];
+	[self.coinsBtn setTitle:[self.coins stringValue] forState:UIControlStateNormal];
 	
 //	[self placingItems];
 	// Do any additional setup after loading the view from its nib.
@@ -49,8 +62,8 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 	self.currentTask = nil;
 	self.possibleAnswer = [[NSMutableString alloc] init];
 
-	self.dataArray = [[NSMutableArray alloc] initWithCapacity:12];
-	for (int i = 0; i < 12; i++) {
+	self.dataArray = [[NSMutableArray alloc] initWithCapacity:numberOfLetter];
+	for (int i = 0; i < numberOfLetter; i++) {
 		[self.dataArray addObject:@"1"];
 	}
 
@@ -60,6 +73,9 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
+
+	NSRange range = NSMakeRange(0, [self.possibleAnswer length]);
+	[self.possibleAnswer deleteCharactersInRange:range];
 
 	[self reloadTask];
 	[self reloadSubview];
@@ -106,13 +122,34 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	LetterCollectionViewCell *cell = (LetterCollectionViewCell *)[self.lettersCellCollectionView cellForItemAtIndexPath:indexPath];
-//	NSLog(@"cell text: %@", [cell.letter text]);
+	NSLog(@"cell text: %@ and indexPath.row: %ld", [cell.letter text], indexPath.row);
 	if (cell) {
-		NSMutableString *selectedLetter = [[NSMutableString alloc] initWithString:[cell.letter text]];
-		self.possibleAnswer = [[self.possibleAnswer  stringByAppendingString:selectedLetter] mutableCopy];
+		int helpIndex = (int)[self.dataArray count] / 2 - 1;
+		int backIndex = (int)[self.dataArray count] - 1;
+		if ((indexPath.row != helpIndex ) && (indexPath.row != backIndex)) {
+			NSMutableString *selectedLetter = [[NSMutableString alloc] initWithString:[cell.letter text]];
+			self.possibleAnswer = [[self.possibleAnswer  stringByAppendingString:selectedLetter] mutableCopy];
+			[cell setHidden:YES];
+			[self answerStringIsChanged];
+		}
+		if (indexPath.row == helpIndex) {
+			UIAlertController *alertController = [UIAlertController
+												  alertControllerWithTitle:@"Problem!?"
+												  message:@"Have you any problem!?\n We dont care!"
+												  preferredStyle:UIAlertControllerStyleAlert];
 
-		[cell setHidden:YES];
-		[self answerStringIsChanged];
+			UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Back to task"
+																  style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+																  }]; // 2
+
+			[alertController addAction:firstAction];
+
+			[self presentViewController:alertController animated:YES completion:nil];
+
+		}
+		if (indexPath.row == backIndex) {
+			[self stepBack];
+		}
 		//		[self isItAnswer];
 		//		[(UIButton *)[self.answerCellStackView viewWithTag:10] setTitle:[cell.letter text] forState:UIControlStateNormal];
 		//		NSLog(@"cell text: %@", [cell.letter text]);
@@ -125,7 +162,23 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 	
 }
 
-- (void)taskWasSolved:(NSNotification *)notification
+- (void) stepBack {
+	int lastLetterPosition = (int)[self.possibleAnswer length];
+	if (lastLetterPosition > 0) {
+		NSLog(@"%d", lastLetterPosition);
+		NSRange range = NSMakeRange(lastLetterPosition - 1, 1);
+		[self.possibleAnswer deleteCharactersInRange:range];
+
+		UILabel *lastFullView = [self.answerCellStackView viewWithTag:100 + lastLetterPosition - 1];
+
+		if (lastFullView) {
+			[lastFullView setText:@" "];
+			lastFullView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:inputBtnImgUrl]];
+		}
+	}
+}
+
+- (void) taskWasSolved:(NSNotification *)notification
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"TaskIsSolved" object:nil];
 	self.currentTask = nil;
@@ -144,17 +197,20 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 	[alertController addAction:firstAction];
 
 	[self presentViewController:alertController animated:YES completion:nil];
+
+	int newCoins = [self.coins intValue] + taskCoast;
+	self.coins = [NSNumber numberWithInt:newCoins];
+	[self.coinsBtn setTitle:[self.coins stringValue] forState:UIControlStateNormal];
+
 }
 
 
 
 - (void)gameIsEnded:(NSNotification *)notification {
 
-	NSString *greeting = [[NSString alloc] initWithFormat:@"game is over!" ];
-
 	UIAlertController *alertController = [UIAlertController
 										  alertControllerWithTitle:@"Sorry!!!"
-										  message:greeting
+										  message:@"game is over!"
 										  preferredStyle:UIAlertControllerStyleAlert];
 
 	UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Back to Menu"
@@ -165,7 +221,6 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 	[alertController addAction:firstAction];
 
 	[self presentViewController:alertController animated:YES completion:nil];
-
 }
 
 - (void) reloadTask {
@@ -184,23 +239,30 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 						   @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T",
 						   @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
 
+	[self.titleLabel setText:self.currentTask.question];
 	[self.questionLabel setText:self.currentTask.question];
 	NSString *answer = self.currentTask.answer;
 
-	for (int i = 0; i < 12; i++) {
-		NSInteger rundInt = rand() % 35;
+	for (int i = 0; i < numberOfLetter; i++) {
+		NSInteger rundInt = rand() % ([letterList count] - 1);
 		NSString *str = [letterList objectAtIndex:rundInt];
 		[self.dataArray replaceObjectAtIndex:i withObject:str];
 	}
 	NSMutableArray *array = [[NSMutableArray alloc] init];
-	while ([answer length] != [array count]) {
-		NSInteger rundInt = rand() % 11;
+	[array addObject:[NSNumber numberWithInt:7]];
+	[self.dataArray replaceObjectAtIndex:7
+							  withObject:@"?"];
+	[array addObject:[NSNumber numberWithInt:15]];
+	[self.dataArray replaceObjectAtIndex:15
+							  withObject:@"~"];
+	while ([answer length] + 2 != [array count]) {
+		NSInteger rundInt = rand() % numberOfLetter - 1;
 		NSNumber *num = [NSNumber numberWithInteger:rundInt];
 		NSInteger location = [array indexOfObject:num];
 		if (location == NSNotFound) {
 			[array addObject:num];
 			[self.dataArray replaceObjectAtIndex:rundInt
-									  withObject:[NSString stringWithFormat:@"%c", [answer characterAtIndex:[array count] - 1]]];
+									  withObject:[NSString stringWithFormat:@"%c", [answer characterAtIndex:[array count] - 3]]];
 		}
 	}
 
@@ -231,19 +293,29 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 //		[subview removeFromSuperview];
 	}
 	NSInteger *numOfLabels = (NSInteger *)[[self.currentTask answer] length];
+	int cellWidth = 40;
+	int indent = 10;
+	int cellGroopWidth = ((int)numOfLabels * cellWidth)	+ ((int)numOfLabels - 1) * indent;
+	int praentWidth = [[UIScreen mainScreen] bounds].size.width;
+	float cellGroopLeading = (praentWidth - cellGroopWidth ) / 2;
+
 	for (int i = 0; i < (int)numOfLabels; i++) {
-		CGRect frameRect = CGRectMake(0 + i * 50, 0, 40, 40);
+		CGRect frameRect = CGRectMake(cellGroopLeading + i * 50, 12, 40, 40);
 		frameRect.size.width = 40;
 		frameRect.size.height = 40;
 
 		UILabel *label = [[UILabel alloc] initWithFrame:frameRect];
-		[label setBackgroundColor:[UIColor blueColor]];
 		[label setText:@" "];
 		[label setTag:100 + i];
 		[label setTextAlignment:NSTextAlignmentCenter];
 		[label.heightAnchor constraintEqualToConstant:40].active = true;
 		[label.widthAnchor constraintEqualToConstant:40].active = true;
 
+		label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:inputBtnImgUrl]];
+
+
+		[label setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
+		[label setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
 
 		[self.answerCellStackView addSubview:label];
 	}
@@ -258,14 +330,30 @@ static NSString *cellIdentifier = @"LatterCollectionViewCell";
 		if(label) {
 			if ([label tag] - 100 < currentLength) {
 				[label setText:[NSString stringWithFormat:@"%c", [self.possibleAnswer characterAtIndex:i]]];
+				label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:selectedLetterBtnImgUrl]];
 			} else {
-				[label setText:@" "];
+//				[label setText:@" "];
+//				label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:inputBtnImgUrl]];
 			}
 		}
 	}
 
 	if ([self.possibleAnswer length] >= [self.currentTask.answer length]) {
-		[self.currentTask verifyAnswer:self.possibleAnswer];
+		bool isSolvd = [self.currentTask verifyAnswer:self.possibleAnswer];
+		if (!isSolvd) {
+			UIAlertController *alertController = [UIAlertController
+												  alertControllerWithTitle:@"Oh no!!!"
+												  message:@"Wrong answer!"
+												  preferredStyle:UIAlertControllerStyleAlert];
+
+			UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Back to task"
+																  style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+																  }]; // 2
+
+			[alertController addAction:firstAction];
+
+			[self presentViewController:alertController animated:YES completion:nil];
+		}
 		NSRange range = NSMakeRange(0, [self.possibleAnswer length]);
 		[self.possibleAnswer deleteCharactersInRange:range];
 		[self reloadSubview];

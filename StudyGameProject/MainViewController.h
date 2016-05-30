@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *playBtn;
 @property (strong, nonatomic) IBOutlet UIButton *hawToPlayBtn;
-@property (strong, nonatomic) IBOutlet UIButton *StoreBtn;
+@property (strong, nonatomic) IBOutlet UIButton *storeBtn;
 
 @property (nonatomic, retain) GameViewController *gameViewController;
 

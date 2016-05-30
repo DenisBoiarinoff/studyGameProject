@@ -54,7 +54,7 @@
 	Task *task3 = [[Task alloc] init];
 	[task3 setQuestion:@"Task 3"];
 	[task3 setAnswer:@"3"];
-	Task *task4 = [Task taskWithQuestion:@"Task 4" andAnswer:@"4"];
+	Task *task4 = [Task taskWithQuestion:@"Task 4" andAnswer:@"4444"];
 	taskArray = [[NSArray alloc] initWithObjects:task1, task2, task3, task4, nil];
 	self.numberOfTasks = [NSNumber numberWithLong:[taskArray count]];
 	self.currentTask = [NSNumber numberWithInt:0];

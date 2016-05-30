@@ -25,7 +25,7 @@
 - (id) initWithQuestion:(NSString *)question andAnswer:(NSString *)answer;
 - (id) initWithTask:(Task *)task;
 
-- (void) verifyAnswer:(NSString *) posibleAnswer;
+- (bool) verifyAnswer:(NSString *) posibleAnswer;
 
 - (void)notifyObserversAboutSolving;
 //-(NSInteger) getAnswerLength;

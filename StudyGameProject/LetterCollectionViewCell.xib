@@ -16,8 +16,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_letter.png" translatesAutoresizingMaskIntoConstraints="NO" id="MOh-hk-Qoj">
                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Q" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpu-CM-mzX">
-                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpu-CM-mzX">
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                         <color key="textColor" red="0.035294117649999998" green="0.066666666669999999" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
