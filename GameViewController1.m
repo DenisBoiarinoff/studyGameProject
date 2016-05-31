@@ -199,7 +199,7 @@ static NSString *btnHelpImg = @"btn_hint";
 	[self.dataArray replaceObjectAtIndex:15
 							  withObject:@" "];
 	while ([answer length] + 2 != [array count]) {
-		NSInteger rundInt = rand() % numberOfLetter1 - 1;
+		NSInteger rundInt = rand() % (numberOfLetter1 - 1);
 		NSNumber *num = [NSNumber numberWithInteger:rundInt];
 		NSInteger location = [array indexOfObject:num];
 		if (location == NSNotFound) {

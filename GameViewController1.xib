@@ -58,9 +58,11 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="yFe-Q1-gn3" firstAttribute="centerY" secondItem="2Q3-SD-vmQ" secondAttribute="centerY" id="2ug-lp-1Gt"/>
                         <constraint firstAttribute="trailing" secondItem="ESU-JC-DeL" secondAttribute="trailing" constant="8" id="91f-ne-FwC"/>
                         <constraint firstAttribute="bottom" secondItem="yFe-Q1-gn3" secondAttribute="bottom" id="Alu-mX-TVJ"/>
                         <constraint firstItem="r3D-pu-9Nh" firstAttribute="leading" secondItem="2Q3-SD-vmQ" secondAttribute="leading" constant="8" id="DyQ-eG-IhZ"/>
+                        <constraint firstItem="r3D-pu-9Nh" firstAttribute="centerY" secondItem="2Q3-SD-vmQ" secondAttribute="centerY" id="LXd-aT-Ivz"/>
                         <constraint firstItem="ESU-JC-DeL" firstAttribute="height" secondItem="2Q3-SD-vmQ" secondAttribute="height" multiplier="1:2" id="QWB-P1-nIh"/>
                         <constraint firstAttribute="height" constant="61" id="WMi-3R-B64"/>
                         <constraint firstAttribute="bottom" secondItem="r3D-pu-9Nh" secondAttribute="bottom" id="q4G-ip-RSf"/>
@@ -72,6 +74,8 @@
                         <mask key="constraints">
                             <exclude reference="WMi-3R-B64"/>
                             <exclude reference="r3e-hT-Fh2"/>
+                            <exclude reference="q4G-ip-RSf"/>
+                            <exclude reference="Alu-mX-TVJ"/>
                         </mask>
                     </variation>
                 </view>
