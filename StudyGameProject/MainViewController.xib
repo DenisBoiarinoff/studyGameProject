@@ -3,10 +3,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="fontImageView" destination="cJi-4U-FxZ" id="kK5-Vb-Kum"/>
+                <outlet property="hawToPlayBtn" destination="M1q-dl-Qq2" id="Ea3-al-sC4"/>
+                <outlet property="playBtn" destination="eER-54-Qh6" id="SAm-ca-vPy"/>
+                <outlet property="storeBtn" destination="04g-4d-nEK" id="x0X-2I-k6y"/>
+                <outlet property="titleLabel" destination="YOR-Ss-B2e" id="hGA-Nn-Wx3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +21,87 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="0.74405653217470769" blue="0.90277474081967168" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="cJi-4U-FxZ">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="490" placeholderIntrinsicHeight="97" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1q-dl-Qq2">
+                    <rect key="frame" x="55" y="251" width="490" height="98"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="M1q-dl-Qq2" secondAttribute="height" multiplier="5:1" id="GFO-K6-Kb2"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="howtoplay_ipad"/>
+                </button>
+                <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04g-4d-nEK">
+                    <rect key="frame" x="55" y="374" width="490" height="98"/>
+                    <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                    <state key="normal" backgroundImage="store_ipad"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="50" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eER-54-Qh6">
+                    <rect key="frame" x="55" y="128" width="490" height="98"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                    <state key="normal" backgroundImage="play_ipad"/>
+                    <connections>
+                        <action selector="toGameView:" destination="-1" eventType="touchUpInside" id="5LY-i4-zGR"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Riddles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOR-Ss-B2e">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="dZi-Mh-m9c"/>
+                        <constraint firstAttribute="width" secondItem="YOR-Ss-B2e" secondAttribute="height" multiplier="10:1" id="y13-XP-S7p"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                    <color key="textColor" red="0.035294117649999998" green="0.066666666669999999" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="1"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dZi-Mh-m9c"/>
+                            <exclude reference="y13-XP-S7p"/>
+                        </mask>
+                    </variation>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="04g-4d-nEK" firstAttribute="width" secondItem="M1q-dl-Qq2" secondAttribute="width" id="0FI-pm-0w4"/>
+                <constraint firstItem="M1q-dl-Qq2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0lO-bX-BOh"/>
+                <constraint firstItem="M1q-dl-Qq2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="1sb-gD-ocx"/>
+                <constraint firstAttribute="trailing" secondItem="YOR-Ss-B2e" secondAttribute="trailing" id="BCu-zw-RmL"/>
+                <constraint firstItem="YOR-Ss-B2e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ct0-Sn-jAk"/>
+                <constraint firstItem="04g-4d-nEK" firstAttribute="centerX" secondItem="M1q-dl-Qq2" secondAttribute="centerX" id="G3g-OX-3iW"/>
+                <constraint firstItem="M1q-dl-Qq2" firstAttribute="height" secondItem="eER-54-Qh6" secondAttribute="height" id="MUb-Bt-dlk"/>
+                <constraint firstItem="cJi-4U-FxZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rd5-a0-XPk"/>
+                <constraint firstItem="M1q-dl-Qq2" firstAttribute="width" secondItem="eER-54-Qh6" secondAttribute="width" id="Rox-kz-FjV"/>
+                <constraint firstItem="YOR-Ss-B2e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="VbQ-JT-NQC"/>
+                <constraint firstAttribute="trailing" secondItem="cJi-4U-FxZ" secondAttribute="trailing" id="Vxi-ST-YQQ"/>
+                <constraint firstItem="cJi-4U-FxZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X8J-m7-jTN"/>
+                <constraint firstItem="eER-54-Qh6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YOR-Ss-B2e" secondAttribute="bottom" constant="60" id="bJx-ya-RJ4"/>
+                <constraint firstItem="04g-4d-nEK" firstAttribute="top" secondItem="M1q-dl-Qq2" secondAttribute="bottom" constant="25" id="bmL-1V-l3T"/>
+                <constraint firstItem="YOR-Ss-B2e" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cOA-wB-0NC"/>
+                <constraint firstItem="04g-4d-nEK" firstAttribute="height" secondItem="M1q-dl-Qq2" secondAttribute="height" id="dJC-jT-25b"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="M1q-dl-Qq2" secondAttribute="trailing" constant="40" id="g7r-F4-VNk"/>
+                <constraint firstItem="eER-54-Qh6" firstAttribute="centerX" secondItem="M1q-dl-Qq2" secondAttribute="centerX" id="hG9-AM-Vgn"/>
+                <constraint firstItem="M1q-dl-Qq2" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="l3H-hx-5fC"/>
+                <constraint firstItem="YOR-Ss-B2e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qmO-i0-7so"/>
+                <constraint firstItem="YOR-Ss-B2e" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:10" id="rXP-PW-3rc"/>
+                <constraint firstAttribute="bottom" secondItem="cJi-4U-FxZ" secondAttribute="bottom" id="sFB-4w-SHO"/>
+                <constraint firstItem="M1q-dl-Qq2" firstAttribute="top" secondItem="eER-54-Qh6" secondAttribute="bottom" constant="25" id="xST-kw-5MG"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="VbQ-JT-NQC"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="500" y="156"/>
         </view>
     </objects>
+    <resources>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="howtoplay_ipad" width="490" height="97"/>
+        <image name="play_ipad" width="490" height="97"/>
+        <image name="store_ipad" width="490" height="97"/>
+    </resources>
 </document>
