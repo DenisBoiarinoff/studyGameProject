@@ -82,6 +82,8 @@ static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGame
 	NSRange range = NSMakeRange(0, [self.possibleAnswer length]);
 	[self.possibleAnswer deleteCharactersInRange:range];
 
+	[self.cellStack clear];
+
 	[self reloadTask];
 	[self reloadSubview];
 
@@ -210,6 +212,7 @@ static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGame
 	int newCoins = [self.coins intValue] + taskCoast;
 	self.coins = [NSNumber numberWithInt:newCoins];
 	[self.coinsBtn setTitle:[self.coins stringValue] forState:UIControlStateNormal];
+	[self.cellStack clear];
 
 }
 
@@ -359,9 +362,12 @@ static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGame
 																  style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
 																  }]; // 2
 
+
 			[alertController addAction:firstAction];
 
 			[self presentViewController:alertController animated:YES completion:nil];
+
+			[self.cellStack clear];
 		}
 		NSRange range = NSMakeRange(0, [self.possibleAnswer length]);
 		[self.possibleAnswer deleteCharactersInRange:range];

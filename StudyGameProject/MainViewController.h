@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class GameViewController;
+//@class GameViewController;
+@class GameViewController1;
 
 @interface MainViewController : UIViewController
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *hawToPlayBtn;
 @property (strong, nonatomic) IBOutlet UIButton *storeBtn;
 
-@property (nonatomic, retain) GameViewController *gameViewController;
+//@property (nonatomic, retain) GameViewController *gameViewController;
+@property (nonatomic, retain) GameViewController1 *gameViewController1;
 
 @end

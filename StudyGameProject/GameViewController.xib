@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
+                <outlet property="LetterView" destination="IRE-gf-hg3" id="4ef-cD-mMo"/>
                 <outlet property="answerCellStackView" destination="jAh-Yz-SJo" id="ik8-QL-frZ"/>
                 <outlet property="backBtn" destination="A44-R2-Y7R" id="qrU-Qo-WlS"/>
                 <outlet property="backgroundImage" destination="NMT-l3-QDj" id="nlb-VQ-Ddm"/>
@@ -47,11 +48,11 @@
                         <constraint firstAttribute="bottom" secondItem="YYX-wl-mec" secondAttribute="bottom" id="qWy-Pj-Z4d"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gnm-dg-ApT">
-                    <rect key="frame" x="8" y="475" width="584" height="117"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gnm-dg-ApT">
+                    <rect key="frame" x="90" y="472" width="420" height="120"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="gnm-dg-ApT" secondAttribute="height" multiplier="5:1" id="T68-fc-UYg"/>
                         <constraint firstAttribute="height" constant="120" id="cYm-eP-acv"/>
+                        <constraint firstAttribute="width" constant="420" id="oSn-hc-A0Q"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hVy-44-U3r">
                         <size key="itemSize" width="40" height="40"/>
@@ -59,11 +60,6 @@
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="T68-fc-UYg"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="uBJ-wg-OjN"/>
                         <outlet property="delegate" destination="-1" id="FcD-Zs-5fW"/>
@@ -111,19 +107,28 @@
                         <action selector="toMainView:" destination="-1" eventType="touchUpInside" id="Yh0-DW-Dbw"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRE-gf-hg3">
+                    <rect key="frame" x="8" y="475" width="584" height="117"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="IRE-gf-hg3" secondAttribute="height" multiplier="5:1" id="Gbq-jG-OKI"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="jAh-Yz-SJo" firstAttribute="top" secondItem="oLF-aC-L9H" secondAttribute="bottom" constant="8" id="5FA-3N-9NR"/>
-                <constraint firstItem="gnm-dg-ApT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="5Ot-jR-nxG"/>
+                <constraint firstItem="gnm-dg-ApT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="5Ot-jR-nxG"/>
                 <constraint firstItem="oLF-aC-L9H" firstAttribute="top" secondItem="A44-R2-Y7R" secondAttribute="bottom" id="99C-PT-Uzf"/>
                 <constraint firstItem="oLF-aC-L9H" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CgA-yH-NZ3"/>
                 <constraint firstItem="HM4-ON-PtB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="Dwb-zN-Zof"/>
-                <constraint firstAttribute="trailing" secondItem="gnm-dg-ApT" secondAttribute="trailing" constant="8" id="ECM-zM-2g5"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gnm-dg-ApT" secondAttribute="trailing" constant="8" id="ECM-zM-2g5"/>
                 <constraint firstAttribute="bottom" secondItem="gnm-dg-ApT" secondAttribute="bottom" constant="8" id="EHr-xK-iZK"/>
                 <constraint firstItem="NMT-l3-QDj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HTe-f5-KLb"/>
                 <constraint firstItem="jAh-Yz-SJo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jhw-eH-Wvp"/>
                 <constraint firstAttribute="trailing" secondItem="3N4-XO-BmX" secondAttribute="trailing" constant="8" id="Kv7-Fw-RkB"/>
+                <constraint firstItem="IRE-gf-hg3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="NB9-GK-MY8"/>
+                <constraint firstItem="IRE-gf-hg3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Q9N-ot-36f"/>
                 <constraint firstItem="NMT-l3-QDj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SU7-Q4-GZh"/>
                 <constraint firstItem="gnm-dg-ApT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UCr-LN-XPt"/>
                 <constraint firstAttribute="trailing" secondItem="jAh-Yz-SJo" secondAttribute="trailing" id="VMW-Yd-HGc"/>
@@ -132,12 +137,20 @@
                 <constraint firstAttribute="trailing" secondItem="NMT-l3-QDj" secondAttribute="trailing" id="d5A-5N-nQk"/>
                 <constraint firstAttribute="trailing" secondItem="oLF-aC-L9H" secondAttribute="trailing" constant="8" id="eZa-sd-VGp"/>
                 <constraint firstItem="HM4-ON-PtB" firstAttribute="height" secondItem="A44-R2-Y7R" secondAttribute="height" id="ee6-yA-2wp"/>
+                <constraint firstAttribute="trailing" secondItem="IRE-gf-hg3" secondAttribute="trailing" constant="8" id="g9I-1y-Gda"/>
                 <constraint firstItem="A44-R2-Y7R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="l8N-gw-Jtm"/>
+                <constraint firstAttribute="bottom" secondItem="IRE-gf-hg3" secondAttribute="bottom" constant="8" id="mkd-yl-Ydy"/>
                 <constraint firstItem="oLF-aC-L9H" firstAttribute="top" secondItem="3N4-XO-BmX" secondAttribute="bottom" id="nCD-VI-ghn"/>
+                <constraint firstItem="IRE-gf-hg3" firstAttribute="top" secondItem="jAh-Yz-SJo" secondAttribute="bottom" constant="8" id="nHG-zH-IHk"/>
                 <constraint firstItem="HM4-ON-PtB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="neV-2W-KAq"/>
                 <constraint firstAttribute="bottom" secondItem="NMT-l3-QDj" secondAttribute="bottom" id="xGA-P6-5Lx"/>
                 <constraint firstItem="oLF-aC-L9H" firstAttribute="top" secondItem="HM4-ON-PtB" secondAttribute="bottom" id="xcI-rP-SFe"/>
             </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="IRE-gf-hg3"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

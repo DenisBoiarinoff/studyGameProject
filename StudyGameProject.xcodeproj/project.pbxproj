@@ -17,7 +17,10 @@
 		590808021CF6FEB2003536B4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 590807FE1CF6FEB2003536B4 /* Default.png */; };
 		590808031CF6FEB2003536B4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 590807FF1CF6FEB2003536B4 /* Default@2x.png */; };
 		590808051CF6FF10003536B4 /* bg_level_completed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 590808041CF6FF10003536B4 /* bg_level_completed@2x.png */; };
+		591442CB1CFD645B003E8995 /* btn_return@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 591442CA1CFD645B003E8995 /* btn_return@2x.png */; };
 		591BCC661CFC4C63006A27F9 /* ViewCellStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BCC651CFC4C63006A27F9 /* ViewCellStack.m */; };
+		591BCC6F1CFC65A0006A27F9 /* GameViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BCC6D1CFC65A0006A27F9 /* GameViewController1.m */; };
+		591BCC701CFC65A0006A27F9 /* GameViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591BCC6E1CFC65A0006A27F9 /* GameViewController1.xib */; };
 		59242E891CF435E200D4C903 /* LetterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59242E871CF435E200D4C903 /* LetterCollectionViewCell.m */; };
 		59242E8A1CF435E200D4C903 /* LetterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59242E881CF435E200D4C903 /* LetterCollectionViewCell.xib */; };
 		59242E8D1CF4587400D4C903 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 59242E8C1CF4587400D4C903 /* Task.m */; };
@@ -62,8 +65,12 @@
 		590807FE1CF6FEB2003536B4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		590807FF1CF6FEB2003536B4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		590808041CF6FF10003536B4 /* bg_level_completed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_level_completed@2x.png"; sourceTree = "<group>"; };
+		591442CA1CFD645B003E8995 /* btn_return@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_return@2x.png"; sourceTree = "<group>"; };
 		591BCC641CFC4C05006A27F9 /* ViewCellStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellStack.h; sourceTree = "<group>"; };
 		591BCC651CFC4C63006A27F9 /* ViewCellStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellStack.m; sourceTree = "<group>"; };
+		591BCC6C1CFC65A0006A27F9 /* GameViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController1.h; path = ../GameViewController1.h; sourceTree = "<group>"; };
+		591BCC6D1CFC65A0006A27F9 /* GameViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController1.m; path = ../GameViewController1.m; sourceTree = "<group>"; };
+		591BCC6E1CFC65A0006A27F9 /* GameViewController1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController1.xib; path = ../GameViewController1.xib; sourceTree = "<group>"; };
 		59242E861CF435E200D4C903 /* LetterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterCollectionViewCell.h; sourceTree = "<group>"; };
 		59242E871CF435E200D4C903 /* LetterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterCollectionViewCell.m; sourceTree = "<group>"; };
 		59242E881CF435E200D4C903 /* LetterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LetterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -147,6 +154,9 @@
 				5990773D1CF2F0BD0057581D /* StudyGameProject.xcdatamodeld */,
 				599077311CF2F0BA0057581D /* Supporting Files */,
 				5990775F1CF3099C0057581D /* GameViewController.h */,
+				591BCC6C1CFC65A0006A27F9 /* GameViewController1.h */,
+				591BCC6D1CFC65A0006A27F9 /* GameViewController1.m */,
+				591BCC6E1CFC65A0006A27F9 /* GameViewController1.xib */,
 				599077601CF3099C0057581D /* GameViewController.m */,
 				599077611CF3099C0057581D /* GameViewController.xib */,
 				59242E861CF435E200D4C903 /* LetterCollectionViewCell.h */,
@@ -188,6 +198,7 @@
 				59E112AA1CF8611900E394D7 /* back@2x.png */,
 				59E112A81CF85B2500E394D7 /* btn_letter@2x.png */,
 				59E112A61CF85AB200E394D7 /* btn_input@2x.png */,
+				591442CA1CFD645B003E8995 /* btn_return@2x.png */,
 				59E112A41CF8586E00E394D7 /* bg_solution@2x.png */,
 				59E112A21CF8456E00E394D7 /* 1.png */,
 				590808041CF6FF10003536B4 /* bg_level_completed@2x.png */,
@@ -287,6 +298,7 @@
 				590807F51CF6F9B6003536B4 /* store_ipad.png in Resources */,
 				599077631CF3099C0057581D /* GameViewController.xib in Resources */,
 				599077441CF2F0BE0057581D /* LaunchScreen.storyboard in Resources */,
+				591BCC701CFC65A0006A27F9 /* GameViewController1.xib in Resources */,
 				590808001CF6FEB2003536B4 /* Default-568h@2x.png in Resources */,
 				59E112A51CF8586E00E394D7 /* bg_solution@2x.png in Resources */,
 				590808031CF6FEB2003536B4 /* Default@2x.png in Resources */,
@@ -297,6 +309,7 @@
 				59E112A31CF8456F00E394D7 /* 1.png in Resources */,
 				59E112AD1CF865C300E394D7 /* btn_coins@2x.png in Resources */,
 				590808021CF6FEB2003536B4 /* Default.png in Resources */,
+				591442CB1CFD645B003E8995 /* btn_return@2x.png in Resources */,
 				59242E8A1CF435E200D4C903 /* LetterCollectionViewCell.xib in Resources */,
 				59E112A71CF85AB200E394D7 /* btn_input@2x.png in Resources */,
 				5990775D1CF2FFA90057581D /* MainViewController.xib in Resources */,
@@ -324,6 +337,7 @@
 				599077621CF3099C0057581D /* GameViewController.m in Sources */,
 				599077361CF2F0BB0057581D /* AppDelegate.m in Sources */,
 				599077331CF2F0BB0057581D /* main.m in Sources */,
+				591BCC6F1CFC65A0006A27F9 /* GameViewController1.m in Sources */,
 				5990773F1CF2F0BD0057581D /* StudyGameProject.xcdatamodeld in Sources */,
 				59242E891CF435E200D4C903 /* LetterCollectionViewCell.m in Sources */,
 				59B35D031CF550280078B56A /* TaskManager.m in Sources */,

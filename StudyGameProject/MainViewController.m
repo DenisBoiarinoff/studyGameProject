@@ -7,8 +7,9 @@
 //
 
 #import "MainViewController.h"
-#import "GameViewController.h"
+//#import "GameViewController.h"
 #import "UIColor+ColorFromHex.h"
+#import "GameViewController1.h"
 
 @interface MainViewController ()
 
@@ -84,12 +85,19 @@
 
 - (IBAction)toGameView:(id)sender {
 
-	if(!self.gameViewController){
-		GameViewController *secondView = [[GameViewController alloc] init];
-		self.gameViewController = secondView;
+//	if(!self.gameViewController){
+//		GameViewController *secondView = [[GameViewController alloc] init];
+//		self.gameViewController = secondView;
+//	}
+//
+//	[self.navigationController pushViewController:self.gameViewController animated:YES];
+
+	if(!self.gameViewController1){
+		GameViewController1 *secondView = [[GameViewController1 alloc] init];
+		self.gameViewController1 = secondView;
 	}
 
-	[self.navigationController pushViewController:self.gameViewController animated:YES];
+	[self.navigationController pushViewController:self.gameViewController1 animated:YES];
 
 }
 @end

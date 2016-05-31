@@ -25,6 +25,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *coinsBtn;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIView *LetterView;
 
 //@property NSArray *taskArray;
 
