@@ -67,7 +67,7 @@
 
 - (void)enfOfInit {
 
-	NSLog(@"enfOfInit");
+//	NSLog(@"enfOfInit");
 	[[NSNotificationCenter defaultCenter]
 	 postNotificationName:@"enfOfInitNotification" object:self];
 

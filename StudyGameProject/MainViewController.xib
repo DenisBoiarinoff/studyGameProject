@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
@@ -29,24 +30,24 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="M1q-dl-Qq2" secondAttribute="height" multiplier="5:1" id="GFO-K6-Kb2"/>
                     </constraints>
-                    <state key="normal" backgroundImage="howtoplay_ipad.png"/>
+                    <state key="normal" backgroundImage="howtoplay_ipad"/>
                 </button>
                 <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04g-4d-nEK">
                     <rect key="frame" x="55" y="374" width="490" height="98"/>
                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    <state key="normal" backgroundImage="store_ipad.png"/>
+                    <state key="normal" backgroundImage="store_ipad"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="50" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eER-54-Qh6">
                     <rect key="frame" x="55" y="128" width="490" height="98"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    <state key="normal" backgroundImage="play_ipad.png"/>
+                    <state key="normal" backgroundImage="play_ipad"/>
                     <connections>
                         <action selector="toGameView:" destination="-1" eventType="touchUpInside" id="5LY-i4-zGR"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Riddles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOR-Ss-B2e">
-                    <rect key="frame" x="0.0" y="15" width="600" height="36"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="dZi-Mh-m9c"/>
                         <constraint firstAttribute="width" secondItem="YOR-Ss-B2e" secondAttribute="height" multiplier="10:1" id="y13-XP-S7p"/>
@@ -77,23 +78,30 @@
                 <constraint firstItem="YOR-Ss-B2e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="VbQ-JT-NQC"/>
                 <constraint firstAttribute="trailing" secondItem="cJi-4U-FxZ" secondAttribute="trailing" id="Vxi-ST-YQQ"/>
                 <constraint firstItem="cJi-4U-FxZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X8J-m7-jTN"/>
-                <constraint firstItem="eER-54-Qh6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YOR-Ss-B2e" secondAttribute="bottom" constant="70" id="bJx-ya-RJ4"/>
+                <constraint firstItem="eER-54-Qh6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YOR-Ss-B2e" secondAttribute="bottom" constant="60" id="bJx-ya-RJ4"/>
                 <constraint firstItem="04g-4d-nEK" firstAttribute="top" secondItem="M1q-dl-Qq2" secondAttribute="bottom" constant="25" id="bmL-1V-l3T"/>
                 <constraint firstItem="YOR-Ss-B2e" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cOA-wB-0NC"/>
                 <constraint firstItem="04g-4d-nEK" firstAttribute="height" secondItem="M1q-dl-Qq2" secondAttribute="height" id="dJC-jT-25b"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="M1q-dl-Qq2" secondAttribute="trailing" constant="40" id="g7r-F4-VNk"/>
                 <constraint firstItem="eER-54-Qh6" firstAttribute="centerX" secondItem="M1q-dl-Qq2" secondAttribute="centerX" id="hG9-AM-Vgn"/>
                 <constraint firstItem="M1q-dl-Qq2" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="l3H-hx-5fC"/>
+                <constraint firstItem="YOR-Ss-B2e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qmO-i0-7so"/>
+                <constraint firstItem="YOR-Ss-B2e" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:10" id="rXP-PW-3rc"/>
                 <constraint firstAttribute="bottom" secondItem="cJi-4U-FxZ" secondAttribute="bottom" id="sFB-4w-SHO"/>
                 <constraint firstItem="M1q-dl-Qq2" firstAttribute="top" secondItem="eER-54-Qh6" secondAttribute="bottom" constant="25" id="xST-kw-5MG"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="VbQ-JT-NQC"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="500" y="156"/>
         </view>
     </objects>
     <resources>
         <image name="Default.png" width="320" height="480"/>
-        <image name="howtoplay_ipad.png" width="490" height="97"/>
-        <image name="play_ipad.png" width="490" height="97"/>
-        <image name="store_ipad.png" width="490" height="97"/>
+        <image name="howtoplay_ipad" width="490" height="97"/>
+        <image name="play_ipad" width="490" height="97"/>
+        <image name="store_ipad" width="490" height="97"/>
     </resources>
 </document>

@@ -36,9 +36,14 @@
 const int numberOfLetter1 = 16;
 const int taskCoast1 = 10;
 
-static NSString *inputBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/StudyGameProject/btn_input@2x.png";
-static NSString *selectedLetterBtnImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/StudyGameProject/btn_letter@2x.png";
-static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/StudyGameProject/btn_return@2x.png";
+int tytleFontSize;
+int cellFontSize;
+float cellSize;
+
+static NSString *inputBtnImg = @"btn_input";
+static NSString *selectedLetterBtnImg = @"btn_letter";
+static NSString *stepBackImg = @"btn_return";
+static NSString *btnHelpImg = @"btn_hint";
 
 - (void)viewDidLoad
 {
@@ -69,11 +74,22 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 {
 	[super viewWillAppear:animated];
 
+	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
+	float letterViewHeight = parentWidth / 4;
+	cellSize = 0.5 * letterViewHeight - 10;
+
+	cellFontSize  = (int)(cellSize * 0.7);
+	tytleFontSize = [[UIScreen mainScreen] bounds].size.height * 0.1 * 0.7 * 0.5;
+
+//	[self.questionLabel setAdjustsFontSizeToFitWidth:YES];
+	[self.questionLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:tytleFontSize]];
+	[self.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:tytleFontSize]];
+
 	NSRange range = NSMakeRange(0, [self.possibleAnswer length]);
 	[self.possibleAnswer deleteCharactersInRange:range];
 
 	[self.cellStack clear];
-
+	
 	[self reloadTask];
 	[self reloadAnswerView];
 	[self reloadLettersView];
@@ -178,7 +194,7 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	[array addObject:[NSNumber numberWithInt:7]];
 	[self.dataArray replaceObjectAtIndex:7
-							  withObject:@"?"];
+							  withObject:@" "];
 	[array addObject:[NSNumber numberWithInt:15]];
 	[self.dataArray replaceObjectAtIndex:15
 							  withObject:@" "];
@@ -204,36 +220,47 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 	}
 
 	NSInteger *numOfLabels = (NSInteger *)[[self.currentTask answer] length];
-	int cellWidth = 40;
+
+
+//	int cellWidth = 40;
 	int indent = 10;
-	int cellGroopWidth = ((int)numOfLabels * cellWidth)	+ ((int)numOfLabels - 1) * indent;
+	int cellGroopWidth = ((int)numOfLabels * cellSize)	+ ((int)numOfLabels - 1) * indent;
 	int praentWidth = [[UIScreen mainScreen] bounds].size.width;
 	float cellGroopLeading = (praentWidth - cellGroopWidth ) / 2;
 
 	for (int i = 0; i < (int)numOfLabels; i++) {
-		CGRect frameRect = CGRectMake(cellGroopLeading + i * 50, 12, 40, 40);
-		frameRect.size.width = 40;
-		frameRect.size.height = 40;
+		CGRect frameRect = CGRectMake(cellGroopLeading + i * (cellSize + indent),
+									  ([[UIScreen mainScreen] bounds].size.height * 0.1 - cellSize) / 2,
+									  cellSize,
+									  cellSize);
+		frameRect.size.width = cellSize;
+		frameRect.size.height = cellSize;
 
 		UILabel *label = [[UILabel alloc] initWithFrame:frameRect];
 		[label setText:@" "];
 		[label setTag:100 + i];
+//		[label setFont:[UIFont fontWithName:@"Arial-BoldMT" size:fontSize]];
 		[label setTextAlignment:NSTextAlignmentCenter];
-		[label.heightAnchor constraintEqualToConstant:40].active = true;
-		[label.widthAnchor constraintEqualToConstant:40].active = true;
+//		[label.heightAnchor constraintEqualToConstant:cellSize].active = true;
+//		[label.widthAnchor constraintEqualToConstant:cellSize].active = true;
 
-		UIImage *letterImg = [UIImage imageNamed:inputBtnImgUrl];
+		UIImage *letterImg = [UIImage imageNamed:inputBtnImg];
+		UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
+													 scale:letterImg.scale
+											   orientation:UIImageOrientationDownMirrored];
 		CGSize imgSize = label.frame.size;
 
 		UIGraphicsBeginImageContext( imgSize );
-		[letterImg drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+		[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
 		UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
 
 		label.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
 
+//		UIImage *letterImg = [UIImage imageNamed:inputBtnImg];
+//		label.layer.backgroundColor = [UIColor colorWithPatternImage:letterImg].CGColor;
 
-		[label setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
+		[label setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
 		[label setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
 
 		[self.answerView addSubview:label];
@@ -248,38 +275,42 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 		}
 	}
 
-	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
-	float letterViewHeight = parentWidth / 4;
-	float cellSide = 0.5 * letterViewHeight - 10;
+//	int fontSize = (int)(cellSize * 0.7);
 
 	for (int j = 0; j < 2; j++) {
 		for (int i = 0; i < (int)(numberOfLetter1 / 2); i++) {
 
-			CGRect frameRect = CGRectMake(5 + i * (cellSide + 10), 5 + j * (cellSide + 10), cellSide, cellSide);
+			CGRect frameRect = CGRectMake(5 + i * (cellSize + 10), 5 + j * (cellSize + 10), cellSize, cellSize);
 			UIButton *letter = [[UIButton alloc] initWithFrame:frameRect];
 			[letter setTitle:[self.dataArray objectAtIndex:i + (int)(numberOfLetter1 / 2) * j] forState:UIControlStateNormal];
-//			NSLog(@"data array object: %@ and index: %d",[self.dataArray objectAtIndex:i + (int)(numberOfLetter1 / 2) * j], i + (int)(numberOfLetter1 / 2)*j);
 			[letter setTag:200 + i + (int)(numberOfLetter1 / 2) * j];
 			[letter setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
-			[letter.heightAnchor constraintEqualToConstant:cellSide].active = true;
-			[letter.widthAnchor constraintEqualToConstant:cellSide].active = true;
+			[letter.heightAnchor constraintEqualToConstant:cellSize].active = true;
+			[letter.widthAnchor constraintEqualToConstant:cellSize].active = true;
 
 			UIImage *letterImg;
 			if (i + (int)(numberOfLetter1 / 2) * j == 15) {
-				letterImg = [UIImage imageNamed:stepBackImgUrl];
+				letterImg = [UIImage imageNamed:stepBackImg];
+			} else if (i + (int)(numberOfLetter1 / 2) * j == 7) {
+				letterImg = [UIImage imageNamed:btnHelpImg];
 			} else {
-				letterImg = [UIImage imageNamed:selectedLetterBtnImgUrl];
+				letterImg = [UIImage imageNamed:selectedLetterBtnImg];
 			}
+			UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
+													 scale:letterImg.scale
+											   orientation:UIImageOrientationDownMirrored];
 			CGSize imgSize = letter.frame.size;
 
 			UIGraphicsBeginImageContext( imgSize );
-			[letterImg drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+			[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
 			UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 			UIGraphicsEndImageContext();
 
 			letter.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
 
-			[letter setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
+
+//			[letter setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
+			[letter setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
 			[letter setTitleColor: [UIColor colorwithHexString:@"091161" alpha:1] forState:UIControlStateNormal];
 
 			[letter addTarget:self
@@ -309,7 +340,7 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 }
 
 - (void) stepBack {
-	NSLog(@"step back");
+//	NSLog(@"step back");
 	int lastLetterPosition = (int)[self.possibleAnswer length];
 	if (lastLetterPosition > 0) {
 		NSRange range = NSMakeRange(lastLetterPosition - 1, 1);
@@ -320,11 +351,14 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 		if (lastFullView) {
 			[lastFullView setText:@" "];
 
-			UIImage *letterImg = [UIImage imageNamed:inputBtnImgUrl];
+			UIImage *letterImg = [UIImage imageNamed:inputBtnImg];
+			UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
+															scale:letterImg.scale
+													  orientation:UIImageOrientationDownMirrored];
 			CGSize imgSize = lastFullView.frame.size;
 
 			UIGraphicsBeginImageContext( imgSize );
-			[letterImg drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+			[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
 			UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 			UIGraphicsEndImageContext();
 
@@ -354,7 +388,7 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 
 - (void) letterSelected:(int) letterIndex
 {
-	NSLog(@"Selected letter with iondex %d", letterIndex);
+//	NSLog(@"Selected letter with iondex %d", letterIndex);
 	UIButton *btn = (UIButton *)[self.lettersView viewWithTag:letterIndex];
 
 	[self.cellStack push:btn];
@@ -374,11 +408,14 @@ static NSString *stepBackImgUrl = @"/Users/rhinoda3/Documents/StudyGameProject/S
 			if ([label tag] - 100 < currentLength) {
 				[label setText:[NSString stringWithFormat:@"%c", [self.possibleAnswer characterAtIndex:i]]];
 
-				UIImage *letterImg = [UIImage imageNamed:selectedLetterBtnImgUrl];
+				UIImage *letterImg = [UIImage imageNamed:selectedLetterBtnImg];
+				UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
+																scale:letterImg.scale
+														  orientation:UIImageOrientationDownMirrored];
 				CGSize imgSize = label.frame.size;
 
 				UIGraphicsBeginImageContext( imgSize );
-				[letterImg drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+				[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
 				UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 				UIGraphicsEndImageContext();
 

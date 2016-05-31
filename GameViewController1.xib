@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController1">
@@ -25,32 +26,32 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="8DV-ak-TOz">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q3-SD-vmQ">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Q3-SD-vmQ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="61"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFe-Q1-gn3">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFe-Q1-gn3">
                             <rect key="frame" x="278" y="40" width="44" height="21"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <color key="textColor" red="0.035294117649999998" green="0.066666666669999999" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESU-JC-DeL">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESU-JC-DeL">
                             <rect key="frame" x="508" y="10" width="84" height="42"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="ESU-JC-DeL" secondAttribute="height" multiplier="2:1" id="M0B-hi-Oa3"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                             <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" backgroundImage="btn_coins.png">
+                            <state key="normal" backgroundImage="btn_coins">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3D-pu-9Nh">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3D-pu-9Nh">
                             <rect key="frame" x="8" y="29" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="r3D-pu-9Nh" secondAttribute="height" multiplier="1:1" id="Jxf-9c-Zz3"/>
                             </constraints>
-                            <state key="normal" backgroundImage="back.png"/>
+                            <state key="normal" backgroundImage="back"/>
                             <connections>
                                 <action selector="toMainView:" destination="-1" eventType="touchUpInside" id="Leg-hi-PsE"/>
                             </connections>
@@ -60,34 +61,48 @@
                         <constraint firstAttribute="trailing" secondItem="ESU-JC-DeL" secondAttribute="trailing" constant="8" id="91f-ne-FwC"/>
                         <constraint firstAttribute="bottom" secondItem="yFe-Q1-gn3" secondAttribute="bottom" id="Alu-mX-TVJ"/>
                         <constraint firstItem="r3D-pu-9Nh" firstAttribute="leading" secondItem="2Q3-SD-vmQ" secondAttribute="leading" constant="8" id="DyQ-eG-IhZ"/>
+                        <constraint firstItem="ESU-JC-DeL" firstAttribute="height" secondItem="2Q3-SD-vmQ" secondAttribute="height" multiplier="1:2" id="QWB-P1-nIh"/>
                         <constraint firstAttribute="height" constant="61" id="WMi-3R-B64"/>
                         <constraint firstAttribute="bottom" secondItem="r3D-pu-9Nh" secondAttribute="bottom" id="q4G-ip-RSf"/>
+                        <constraint firstAttribute="width" secondItem="2Q3-SD-vmQ" secondAttribute="height" multiplier="600:61" id="r3e-hT-Fh2"/>
                         <constraint firstItem="ESU-JC-DeL" firstAttribute="centerY" secondItem="2Q3-SD-vmQ" secondAttribute="centerY" id="rIx-pn-pW7"/>
+                        <constraint firstItem="r3D-pu-9Nh" firstAttribute="width" secondItem="2Q3-SD-vmQ" secondAttribute="height" multiplier="1:2" id="x0S-p5-lrO"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="WMi-3R-B64"/>
+                            <exclude reference="r3e-hT-Fh2"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T2-WU-wgf">
-                    <rect key="frame" x="0.0" y="386" width="600" height="64"/>
+                    <rect key="frame" x="0.0" y="390" width="600" height="60"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_solution.png" translatesAutoresizingMaskIntoConstraints="NO" id="nNl-s6-1Vq">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_solution" translatesAutoresizingMaskIntoConstraints="NO" id="nNl-s6-1Vq">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                         </imageView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="nNl-s6-1Vq" firstAttribute="top" secondItem="3T2-WU-wgf" secondAttribute="top" id="RAp-9X-4Fo"/>
                         <constraint firstAttribute="trailing" secondItem="nNl-s6-1Vq" secondAttribute="trailing" id="Rkj-Ye-gr5"/>
                         <constraint firstItem="nNl-s6-1Vq" firstAttribute="leading" secondItem="3T2-WU-wgf" secondAttribute="leading" id="VmH-0a-dPU"/>
-                        <constraint firstAttribute="height" constant="64" id="acf-Sn-of1"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="acf-Sn-of1"/>
                         <constraint firstAttribute="bottom" secondItem="nNl-s6-1Vq" secondAttribute="bottom" id="bN6-6M-jHS"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="acf-Sn-of1"/>
+                        </mask>
+                    </variation>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFz-Sm-tX3">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFz-Sm-tX3">
                     <rect key="frame" x="0.0" y="61" width="600" height="325"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlp-zU-uEE">
-                    <rect key="frame" x="0.0" y="450" width="600" height="150"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlp-zU-uEE">
+                    <rect key="frame" x="0.0" y="707" width="600" height="150"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Rlp-zU-uEE" secondAttribute="height" multiplier="4:1" id="eBk-ZH-jsx"/>
                     </constraints>
@@ -97,6 +112,8 @@
             <constraints>
                 <constraint firstItem="fFz-Sm-tX3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3K1-Du-tvo"/>
                 <constraint firstItem="2Q3-SD-vmQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="A9y-tf-hVR"/>
+                <constraint firstItem="3T2-WU-wgf" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:10" id="EFE-j2-y4P"/>
+                <constraint firstItem="2Q3-SD-vmQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:10" id="G4h-c1-BMU"/>
                 <constraint firstItem="8DV-ak-TOz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GdN-j1-nI5"/>
                 <constraint firstItem="fFz-Sm-tX3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H2Z-HP-MaV"/>
                 <constraint firstItem="Rlp-zU-uEE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HW1-gO-Np3"/>
@@ -122,8 +139,8 @@
     </objects>
     <resources>
         <image name="Default" width="320" height="480"/>
-        <image name="back.png" width="32" height="32"/>
-        <image name="bg_solution.png" width="320" height="50"/>
-        <image name="btn_coins.png" width="84" height="36"/>
+        <image name="back" width="32" height="32"/>
+        <image name="bg_solution" width="320" height="50"/>
+        <image name="btn_coins" width="84" height="36"/>
     </resources>
 </document>

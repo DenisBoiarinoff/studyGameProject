@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
+	[self.titleLabel setAdjustsFontSizeToFitWidth:YES];
 
 //	CGRect screenRect = [[UIScreen mainScreen] bounds];
 //
