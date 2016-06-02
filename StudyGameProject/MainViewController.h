@@ -29,6 +29,6 @@
 
 @property UInt32 soundId;
 
-@property bool sound;
+@property bool isSound;
 
 @end

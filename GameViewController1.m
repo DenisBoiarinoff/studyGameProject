@@ -35,19 +35,22 @@
 
 @implementation GameViewController1
 
-@synthesize sound;
+@synthesize isSound;
 
 const int numberOfLetter1 = 16;
 const int taskCoast1 = 10;
 
 int tytleFontSize;
 int cellFontSize;
+int tuskNum;
 float cellSize;
 
 static NSString *inputBtnImg = @"btn_input";
 static NSString *selectedLetterBtnImg = @"btn_letter";
 static NSString *stepBackImg = @"btn_return";
 static NSString *btnHelpImg = @"btn_hint";
+
+NSMutableString *headerText;
 
 - (void)viewDidLoad
 {
@@ -82,6 +85,10 @@ static NSString *btnHelpImg = @"btn_hint";
 	for (int i = 0; i < numberOfLetter1; i++) {
 		[self.dataArray addObject:@"0"];
 	}
+
+//	tuskNum = 1;
+	tuskNum = 0;
+	headerText = [[NSMutableString alloc] initWithString:@"Task # "];
 
 }
 
@@ -138,7 +145,7 @@ static NSString *btnHelpImg = @"btn_hint";
 
 - (void) taskWasSolved:(NSNotification *)notification
 {
-	if (sound) AudioServicesPlaySystemSound(_soundWinId);
+	if (isSound) AudioServicesPlaySystemSound(_soundWinId);
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"TaskIsSolved" object:nil];
 	self.currentTask = nil;
 
@@ -150,6 +157,7 @@ static NSString *btnHelpImg = @"btn_hint";
 	UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Next Level"
 														  style:UIAlertActionStyleDefault
 														handler:^(UIAlertAction * action) {
+//															tuskNum = tuskNum + 1;
 															[self reloadTask];
 															int newCoins = [self.coins intValue] + taskCoast1;
 															self.coins = [NSNumber numberWithInt:newCoins];
@@ -182,7 +190,7 @@ static NSString *btnHelpImg = @"btn_hint";
 
 - (IBAction)toMainView:(id)sender
 {
-	 if (sound) AudioServicesPlaySystemSound(_soundBackId);
+	 if (isSound) AudioServicesPlaySystemSound(_soundBackId);
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -190,6 +198,7 @@ static NSString *btnHelpImg = @"btn_hint";
 
 	if(!self.currentTask) {
 		self.currentTask = [self.taskManger getTask];
+		if (self.currentTask) tuskNum = tuskNum + 1;
 		[[NSNotificationCenter defaultCenter] addObserver:self
 												 selector:@selector(taskWasSolved:)
 													 name:@"TaskIsSolved"
@@ -202,7 +211,12 @@ static NSString *btnHelpImg = @"btn_hint";
 						   @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T",
 						   @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
 
-	[self.titleLabel setText:self.currentTask.question];
+	[headerText replaceCharactersInRange:NSMakeRange([headerText length] - 1, 1)
+							  withString:[NSString stringWithFormat:@"%d",tuskNum]];
+
+//	[self.titleLabel setText:self.currentTask.question];
+	[self.titleLabel setText:headerText];
+
 	[self.questionLabel setText:self.currentTask.question];
 	NSString *answer = self.currentTask.answer;
 
@@ -294,7 +308,7 @@ static NSString *btnHelpImg = @"btn_hint";
 
 -(IBAction)letterBtnPressed:(id)sender
 {
-	if (sound) {
+	if (isSound) {
 		AudioServicesPlaySystemSound(_soundLetterId);
 		NSLog(@"some sound");
 	}
@@ -310,6 +324,22 @@ static NSString *btnHelpImg = @"btn_hint";
 			[self letterSelected: letterIndex];
 			break;
 	}
+}
+
+- (void) helpPopup
+{
+	UIAlertController *alertController = [UIAlertController
+										  alertControllerWithTitle:@"Problem!?"
+										  message:@"Have you any problem!?\n We dont care!"
+										  preferredStyle:UIAlertControllerStyleAlert];
+
+	UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Back to task"
+														  style:UIAlertActionStyleDefault
+														handler:^(UIAlertAction * action) {}]; // 2
+
+	[alertController addAction:firstAction];
+
+	[self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void) stepBack {
@@ -373,22 +403,6 @@ static NSString *btnHelpImg = @"btn_hint";
 
 
 	}
-}
-
-- (void) helpPopup
-{
-	UIAlertController *alertController = [UIAlertController
-										  alertControllerWithTitle:@"Problem!?"
-										  message:@"Have you any problem!?\n We dont care!"
-										  preferredStyle:UIAlertControllerStyleAlert];
-
-	UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Back to task"
-														  style:UIAlertActionStyleDefault
-														handler:^(UIAlertAction * action) {}]; // 2
-
-	[alertController addAction:firstAction];
-
-	[self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void) letterSelected:(int) letterIndex
@@ -467,7 +481,7 @@ static NSString *btnHelpImg = @"btn_hint";
 	if ([self.possibleAnswer length] >= [self.currentTask.answer length]) {
 		bool isSolvd = [self.currentTask verifyAnswer:self.possibleAnswer];
 		if (!isSolvd) {
-			if (sound) AudioServicesPlaySystemSound(_soundFailId);
+			if (isSound) AudioServicesPlaySystemSound(_soundFailId);
 			UIAlertController *alertController = [UIAlertController
 												  alertControllerWithTitle:@"Oh no!!!"
 												  message:@"Wrong answer!"
@@ -475,17 +489,22 @@ static NSString *btnHelpImg = @"btn_hint";
 
 			UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Back to task"
 																  style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-																	  [self.cellStack clear];
+//																	  [self cancelAnswerViewAnimatin];
+//																	  [self.cellStack clear];
 																  }]; // 2
 
 			[alertController addAction:firstAction];
 
 			[self presentViewController:alertController animated:YES completion:nil];
 		}
-		NSRange range = NSMakeRange(0, [self.possibleAnswer length]);
-		[self.possibleAnswer deleteCharactersInRange:range];
-		[self reloadAnswerView];
-		[self reloadLettersView];
+		[self cancelAnswerViewAnimatin];
+		[self.cellStack clear];
+
+//		NSRange range = NSMakeRange(0, [self.possibleAnswer length]);
+//		[self.possibleAnswer deleteCharactersInRange:range];
+
+//		[self reloadAnswerView];
+//		[self reloadLettersView];
 	}
 }
 
@@ -545,6 +564,17 @@ static NSString *btnHelpImg = @"btn_hint";
 	 forControlEvents:UIControlEventTouchUpInside];
 
 	return letter;
+}
+
+- (void) cancelAnswerViewAnimatin {
+
+	int num = (int)self.cellStack.count;
+	for (int i = 0; i < num; i++) {
+//		NSLog(@"i : %d", i);
+		[self stepBack];
+	}
+
+
 }
 
 @end

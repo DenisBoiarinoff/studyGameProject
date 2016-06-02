@@ -17,7 +17,7 @@
 
 @implementation MainViewController
 
-@synthesize sound;
+@synthesize isSound;
 
 static NSString *onSound = @"sound-on";
 static NSString *offSound = @"sound-off";
@@ -34,7 +34,7 @@ static NSString *offSound = @"sound-off";
 	soundfileURLRef = CFBundleCopyResourceURL(mainBundle, (CFStringRef) @"tap", CFSTR("wav"), NULL);
 	AudioServicesCreateSystemSoundID(soundfileURLRef,  & _soundId);
 
-	self.sound = TRUE;
+	self.isSound = TRUE;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,7 +59,7 @@ static NSString *offSound = @"sound-off";
 
 - (IBAction)toGameView:(id)sender {
 
-	if (self.sound) AudioServicesPlaySystemSound(_soundId);
+	if (self.isSound) AudioServicesPlaySystemSound(_soundId);
 
 	switch ([sender tag]) {
 		case 10:
@@ -76,9 +76,9 @@ static NSString *offSound = @"sound-off";
 
 - (IBAction)soundSwich:(id)sender {
 
-	self.sound = !self.sound;
+	self.isSound = !self.isSound;
 	
-	if (self.sound) {
+	if (self.isSound) {
 		[self.soundBtn setBackgroundImage:[UIImage imageNamed:onSound] forState:UIControlStateNormal];
 	} else {
 		[self.soundBtn setBackgroundImage:[UIImage imageNamed:offSound] forState:UIControlStateNormal];
@@ -94,12 +94,8 @@ static NSString *offSound = @"sound-off";
 
 	}
 
-	[self.gameViewController1 setSound:sound];
+	[self.gameViewController1 setIsSound:isSound];
 	[self.navigationController pushViewController:self.gameViewController1 animated:YES];
-}
-
-- (bool) getSound {
-	return sound;
 }
 
 @end
