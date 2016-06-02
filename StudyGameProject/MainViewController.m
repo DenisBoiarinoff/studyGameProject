@@ -5,6 +5,7 @@
 //  Created by Rhinoda3 on 23.05.16.
 //  Copyright © 2016 Rhinoda. All rights reserved.
 //
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "MainViewController.h"
 //#import "GameViewController.h"
@@ -21,6 +22,13 @@
     [super viewDidLoad];
 
 	[self.titleLabel setAdjustsFontSizeToFitWidth:YES];
+
+	[self.navigationController.navigationBar setHidden:YES];
+
+	CFBundleRef mainBundle = CFBundleGetMainBundle();
+	CFURLRef soundfileURLRef;
+	soundfileURLRef = CFBundleCopyResourceURL(mainBundle, (CFStringRef) @"tap", CFSTR("wav"), NULL);
+	AudioServicesCreateSystemSoundID(soundfileURLRef,  & _soundId);
 
 //	CGRect screenRect = [[UIScreen mainScreen] bounds];
 //
@@ -53,7 +61,7 @@
 //	newFrame.origin.x = screenRect.size.width / 2 - newFrame.size.width / 2;
 //	[self.titleLabel setFrame:newFrame];
 //
-	[self.navigationController.navigationBar setHidden:YES];
+
 //	[self.navigationController.navigationBar setBackgroundColor:[UIColor colorwithHexString:@"FFFFFF" alpha:.0]];
 
 //	[self setTitle:@"Riddles"];
@@ -83,6 +91,11 @@
 }
 */
 
+- (void)dealloc
+{
+	AudioServicesDisposeSystemSoundID(_soundId);
+}
+
 - (IBAction)toGameView:(id)sender {
 
 //	if(!self.gameViewController){
@@ -92,12 +105,31 @@
 //
 //	[self.navigationController pushViewController:self.gameViewController animated:YES];
 
+	AudioServicesPlaySystemSound(_soundId);
+
+	switch ([sender tag]) {
+		case 10:
+			[self gameViewStart];
+			break;
+
+		default:
+			break;
+	}
+
+
+
+}
+
+- (IBAction)soundSwich:(id)sender {
+}
+
+- (void) gameViewStart
+{
 	if(!self.gameViewController1){
 		GameViewController1 *secondView = [[GameViewController1 alloc] init];
 		self.gameViewController1 = secondView;
 	}
 
 	[self.navigationController pushViewController:self.gameViewController1 animated:YES];
-
 }
 @end

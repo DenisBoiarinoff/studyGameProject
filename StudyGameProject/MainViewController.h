@@ -14,6 +14,7 @@
 @interface MainViewController : UIViewController
 
 - (IBAction)toGameView:(id)sender;
+- (IBAction)soundSwich:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIImageView *fontImageView;
 
@@ -25,5 +26,7 @@
 
 //@property (nonatomic, retain) GameViewController *gameViewController;
 @property (nonatomic, retain) GameViewController1 *gameViewController1;
+
+@property UInt32 soundId;
 
 @end

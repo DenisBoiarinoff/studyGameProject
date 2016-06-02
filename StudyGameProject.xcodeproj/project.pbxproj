@@ -12,6 +12,11 @@
 		590808011CF6FEB2003536B4 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 590807FD1CF6FEB2003536B4 /* Default-Portrait.png */; };
 		590808021CF6FEB2003536B4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 590807FE1CF6FEB2003536B4 /* Default.png */; };
 		590808031CF6FEB2003536B4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 590807FF1CF6FEB2003536B4 /* Default@2x.png */; };
+		5914430D1CFDC276003E8995 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5914430C1CFDC276003E8995 /* AudioToolbox.framework */; };
+		591443121CFDC30A003E8995 /* fail.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5914430E1CFDC30A003E8995 /* fail.wav */; };
+		591443131CFDC30A003E8995 /* letter_tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5914430F1CFDC30A003E8995 /* letter_tap.wav */; };
+		591443141CFDC30A003E8995 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 591443101CFDC30A003E8995 /* success.wav */; };
+		591443151CFDC30A003E8995 /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 591443111CFDC30A003E8995 /* tap.wav */; };
 		591BCC661CFC4C63006A27F9 /* ViewCellStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BCC651CFC4C63006A27F9 /* ViewCellStack.m */; };
 		591BCC6F1CFC65A0006A27F9 /* GameViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BCC6D1CFC65A0006A27F9 /* GameViewController1.m */; };
 		591BCC701CFC65A0006A27F9 /* GameViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591BCC6E1CFC65A0006A27F9 /* GameViewController1.xib */; };
@@ -30,6 +35,7 @@
 		599077631CF3099C0057581D /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599077611CF3099C0057581D /* GameViewController.xib */; };
 		59B35D031CF550280078B56A /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B35D021CF550280078B56A /* TaskManager.m */; };
 		59E112A31CF8456F00E394D7 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E112A21CF8456E00E394D7 /* 1.png */; };
+		59F1AEBB1CFEA63A00F9857B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F1AEBA1CFEA63A00F9857B /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,11 @@
 		590807FD1CF6FEB2003536B4 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		590807FE1CF6FEB2003536B4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		590807FF1CF6FEB2003536B4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5914430C1CFDC276003E8995 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5914430E1CFDC30A003E8995 /* fail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = fail.wav; path = ../../Game/Sounds/fail.wav; sourceTree = "<group>"; };
+		5914430F1CFDC30A003E8995 /* letter_tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = letter_tap.wav; path = ../../Game/Sounds/letter_tap.wav; sourceTree = "<group>"; };
+		591443101CFDC30A003E8995 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = success.wav; path = ../../Game/Sounds/success.wav; sourceTree = "<group>"; };
+		591443111CFDC30A003E8995 /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tap.wav; path = ../../Game/Sounds/tap.wav; sourceTree = "<group>"; };
 		591BCC641CFC4C05006A27F9 /* ViewCellStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellStack.h; sourceTree = "<group>"; };
 		591BCC651CFC4C63006A27F9 /* ViewCellStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellStack.m; sourceTree = "<group>"; };
 		591BCC6C1CFC65A0006A27F9 /* GameViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController1.h; path = ../GameViewController1.h; sourceTree = "<group>"; };
@@ -79,6 +90,7 @@
 		59B35D011CF550270078B56A /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskManager.h; sourceTree = "<group>"; };
 		59B35D021CF550280078B56A /* TaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskManager.m; sourceTree = "<group>"; };
 		59E112A21CF8456E00E394D7 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		59F1AEBA1CFEA63A00F9857B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F1AEBB1CFEA63A00F9857B /* AVFoundation.framework in Frameworks */,
+				5914430D1CFDC276003E8995 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,9 +113,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		591443161CFDC30F003E8995 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5914430E1CFDC30A003E8995 /* fail.wav */,
+				5914430F1CFDC30A003E8995 /* letter_tap.wav */,
+				591443101CFDC30A003E8995 /* success.wav */,
+				591443111CFDC30A003E8995 /* tap.wav */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
 		599077251CF2F0B30057581D = {
 			isa = PBXGroup;
 			children = (
+				59F1AEBA1CFEA63A00F9857B /* AVFoundation.framework */,
+				5914430C1CFDC276003E8995 /* AudioToolbox.framework */,
 				599077301CF2F0BA0057581D /* StudyGameProject */,
 				5990774D1CF2F0C00057581D /* StudyGameProjectTests */,
 				5990772F1CF2F0B60057581D /* Products */,
@@ -120,6 +147,7 @@
 		599077301CF2F0BA0057581D /* StudyGameProject */ = {
 			isa = PBXGroup;
 			children = (
+				591443161CFDC30F003E8995 /* sounds */,
 				5990775E1CF3017B0057581D /* img */,
 				599077591CF2FFA90057581D /* MainViewController.h */,
 				5990775A1CF2FFA90057581D /* MainViewController.m */,
@@ -261,14 +289,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				591443121CFDC30A003E8995 /* fail.wav in Resources */,
 				599077631CF3099C0057581D /* GameViewController.xib in Resources */,
 				599077441CF2F0BE0057581D /* LaunchScreen.storyboard in Resources */,
 				591BCC701CFC65A0006A27F9 /* GameViewController1.xib in Resources */,
 				590808001CF6FEB2003536B4 /* Default-568h@2x.png in Resources */,
+				591443131CFDC30A003E8995 /* letter_tap.wav in Resources */,
 				590808031CF6FEB2003536B4 /* Default@2x.png in Resources */,
 				59E112A31CF8456F00E394D7 /* 1.png in Resources */,
 				590808021CF6FEB2003536B4 /* Default.png in Resources */,
+				591443151CFDC30A003E8995 /* tap.wav in Resources */,
 				59242E8A1CF435E200D4C903 /* LetterCollectionViewCell.xib in Resources */,
+				591443141CFDC30A003E8995 /* success.wav in Resources */,
 				5990775D1CF2FFA90057581D /* MainViewController.xib in Resources */,
 				590808011CF6FEB2003536B4 /* Default-Portrait.png in Resources */,
 				599077411CF2F0BE0057581D /* Assets.xcassets in Resources */,

@@ -25,4 +25,9 @@
 
 - (IBAction)toMainView:(id)sender;
 
+@property UInt32 soundLetterId;
+@property UInt32 soundBackId;
+@property UInt32 soundFailId;
+@property UInt32 soundWinId;
+
 @end

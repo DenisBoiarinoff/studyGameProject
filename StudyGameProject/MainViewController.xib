@@ -25,19 +25,25 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="cJi-4U-FxZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="490" placeholderIntrinsicHeight="97" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1q-dl-Qq2">
+                <button opaque="NO" tag="11" contentMode="scaleToFill" placeholderIntrinsicWidth="490" placeholderIntrinsicHeight="97" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1q-dl-Qq2">
                     <rect key="frame" x="55" y="251" width="490" height="98"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="M1q-dl-Qq2" secondAttribute="height" multiplier="5:1" id="GFO-K6-Kb2"/>
                     </constraints>
                     <state key="normal" backgroundImage="howtoplay_ipad"/>
+                    <connections>
+                        <action selector="toGameView:" destination="-1" eventType="touchUpInside" id="3Hd-vs-sZY"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04g-4d-nEK">
+                <button opaque="NO" tag="12" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04g-4d-nEK">
                     <rect key="frame" x="55" y="374" width="490" height="98"/>
                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     <state key="normal" backgroundImage="store_ipad"/>
+                    <connections>
+                        <action selector="toGameView:" destination="-1" eventType="touchUpInside" id="Og7-lu-6Rc"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="50" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eER-54-Qh6">
+                <button opaque="NO" tag="10" contentMode="scaleToFill" verticalHuggingPriority="50" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eER-54-Qh6">
                     <rect key="frame" x="55" y="128" width="490" height="98"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
@@ -63,6 +69,12 @@
                         </mask>
                     </variation>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2EK-hG-wFo">
+                    <rect key="frame" x="277" y="505" width="46" height="30"/>
+                    <connections>
+                        <action selector="soundSwich:" destination="-1" eventType="touchUpInside" id="G2z-oR-50t"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
