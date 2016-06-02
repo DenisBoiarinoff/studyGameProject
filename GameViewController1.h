@@ -30,4 +30,6 @@
 @property UInt32 soundFailId;
 @property UInt32 soundWinId;
 
+@property bool sound;
+
 @end

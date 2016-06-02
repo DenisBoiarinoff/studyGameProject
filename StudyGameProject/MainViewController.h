@@ -23,9 +23,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *hawToPlayBtn;
 @property (strong, nonatomic) IBOutlet UIButton *storeBtn;
 
-//@property (nonatomic, retain) GameViewController *gameViewController;
+@property (strong, nonatomic) IBOutlet UIButton *soundBtn;
+
 @property (nonatomic, retain) GameViewController1 *gameViewController1;
 
 @property UInt32 soundId;
+
+@property bool sound;
 
 @end

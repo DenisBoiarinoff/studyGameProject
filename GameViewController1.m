@@ -13,6 +13,7 @@
 #import "TaskManager.h"
 #import "UIColor+ColorFromHex.h"
 #import "ViewCellStack.h"
+#import "MainViewController.h"
 
 @interface GameViewController1 ()
 
@@ -30,11 +31,11 @@
 
 @property (nonatomic, strong) ViewCellStack *cellStack;
 
-//@property (nonatomic, strong) UILabel *animationLabel;
-
 @end
 
 @implementation GameViewController1
+
+@synthesize sound;
 
 const int numberOfLetter1 = 16;
 const int taskCoast1 = 10;
@@ -62,30 +63,6 @@ static NSString *btnHelpImg = @"btn_hint";
 	AudioServicesCreateSystemSoundID(soundfileURLRef,  & _soundFailId);
 	soundfileURLRef = CFBundleCopyResourceURL(mainBundle, (CFStringRef) @"success", CFSTR("wav"), NULL);
 	AudioServicesCreateSystemSoundID(soundfileURLRef,  & _soundWinId);
-
-//	CGRect frameRect = CGRectMake(0, 0, cellSize, cellSize);
-//	self.animationLabel = [[UILabel alloc] initWithFrame:frameRect];
-
-//	UIImage *letterImg = [UIImage imageNamed:inputBtnImg];
-//	UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
-//													scale:letterImg.scale
-//											  orientation:UIImageOrientationDownMirrored];
-//	CGSize imgSize = self.animationLabel.frame.size;
-//
-//	UIGraphicsBeginImageContext( imgSize );
-//	[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
-//	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-//	UIGraphicsEndImageContext();
-//
-//	self.animationLabel.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
-
-//	[self.animationLabel setText:@" "];
-
-//	[self.animationLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
-//	[self.animationLabel setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
-
-//	[self.animationLabel setHidden:YES];
-//	[self.view addSubview:self.animationLabel];
 
 	self.cellStack = [[ViewCellStack alloc] init];
 
@@ -161,7 +138,7 @@ static NSString *btnHelpImg = @"btn_hint";
 
 - (void) taskWasSolved:(NSNotification *)notification
 {
-	AudioServicesPlaySystemSound(_soundWinId);
+	if (sound) AudioServicesPlaySystemSound(_soundWinId);
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"TaskIsSolved" object:nil];
 	self.currentTask = nil;
 
@@ -205,7 +182,7 @@ static NSString *btnHelpImg = @"btn_hint";
 
 - (IBAction)toMainView:(id)sender
 {
-	AudioServicesPlaySystemSound(_soundBackId);
+	 if (sound) AudioServicesPlaySystemSound(_soundBackId);
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -317,7 +294,10 @@ static NSString *btnHelpImg = @"btn_hint";
 
 -(IBAction)letterBtnPressed:(id)sender
 {
-	AudioServicesPlaySystemSound(_soundLetterId);
+	if (sound) {
+		AudioServicesPlaySystemSound(_soundLetterId);
+		NSLog(@"some sound");
+	}
 	int letterIndex = (int)[sender tag];
 	switch (letterIndex) {
 		case 207:
@@ -460,23 +440,6 @@ static NSString *btnHelpImg = @"btn_hint";
 	NSInteger currentLength = [self.possibleAnswer length];
 	NSInteger answerLength = [self.currentTask.answer length];
 
-//	UILabel *label = [self.answerView viewWithTag: 99 + currentLength];
-//
-//	[label setText:[NSString stringWithFormat:@"%c", [self.possibleAnswer characterAtIndex:currentLength - 1]]];
-//
-//	UIImage *letterImg = [UIImage imageNamed:selectedLetterBtnImg];
-//	UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
-//													scale:letterImg.scale
-//											  orientation:UIImageOrientationDownMirrored];
-//	CGSize imgSize = label.frame.size;
-//
-//	UIGraphicsBeginImageContext( imgSize );
-//	[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
-//	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-//	UIGraphicsEndImageContext();
-//
-//	label.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
-/*---------------------------------------------------------------------------------------------*/
 	for(int i = 0; i < answerLength; i++) {
 		UILabel *label = [self.answerView viewWithTag:100 + i];
 		if(label) {
@@ -504,7 +467,7 @@ static NSString *btnHelpImg = @"btn_hint";
 	if ([self.possibleAnswer length] >= [self.currentTask.answer length]) {
 		bool isSolvd = [self.currentTask verifyAnswer:self.possibleAnswer];
 		if (!isSolvd) {
-			AudioServicesPlaySystemSound(_soundFailId);
+			if (sound) AudioServicesPlaySystemSound(_soundFailId);
 			UIAlertController *alertController = [UIAlertController
 												  alertControllerWithTitle:@"Oh no!!!"
 												  message:@"Wrong answer!"
@@ -569,7 +532,6 @@ static NSString *btnHelpImg = @"btn_hint";
 
 	UIGraphicsBeginImageContext( letterImgSize );
 	[letterImgMirored drawInRect:CGRectMake(0, 0, letterImgSize.width, letterImgSize.height)];
-	//			[letterImg drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
 	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 
