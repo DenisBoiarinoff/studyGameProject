@@ -20,8 +20,6 @@
 		591BCC661CFC4C63006A27F9 /* ViewCellStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BCC651CFC4C63006A27F9 /* ViewCellStack.m */; };
 		591BCC6F1CFC65A0006A27F9 /* GameViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BCC6D1CFC65A0006A27F9 /* GameViewController1.m */; };
 		591BCC701CFC65A0006A27F9 /* GameViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591BCC6E1CFC65A0006A27F9 /* GameViewController1.xib */; };
-		59242E891CF435E200D4C903 /* LetterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59242E871CF435E200D4C903 /* LetterCollectionViewCell.m */; };
-		59242E8A1CF435E200D4C903 /* LetterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59242E881CF435E200D4C903 /* LetterCollectionViewCell.xib */; };
 		59242E8D1CF4587400D4C903 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 59242E8C1CF4587400D4C903 /* Task.m */; };
 		599077331CF2F0BB0057581D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 599077321CF2F0BB0057581D /* main.m */; };
 		599077361CF2F0BB0057581D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 599077351CF2F0BB0057581D /* AppDelegate.m */; };
@@ -31,8 +29,6 @@
 		5990774F1CF2F0C00057581D /* StudyGameProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5990774E1CF2F0C00057581D /* StudyGameProjectTests.m */; };
 		5990775C1CF2FFA90057581D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5990775A1CF2FFA90057581D /* MainViewController.m */; };
 		5990775D1CF2FFA90057581D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5990775B1CF2FFA90057581D /* MainViewController.xib */; };
-		599077621CF3099C0057581D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599077601CF3099C0057581D /* GameViewController.m */; };
-		599077631CF3099C0057581D /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599077611CF3099C0057581D /* GameViewController.xib */; };
 		59B35D031CF550280078B56A /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B35D021CF550280078B56A /* TaskManager.m */; };
 		59E112A31CF8456F00E394D7 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E112A21CF8456E00E394D7 /* 1.png */; };
 		59F1AEBB1CFEA63A00F9857B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F1AEBA1CFEA63A00F9857B /* AVFoundation.framework */; };
@@ -65,9 +61,6 @@
 		591BCC6C1CFC65A0006A27F9 /* GameViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController1.h; path = ../GameViewController1.h; sourceTree = "<group>"; };
 		591BCC6D1CFC65A0006A27F9 /* GameViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController1.m; path = ../GameViewController1.m; sourceTree = "<group>"; };
 		591BCC6E1CFC65A0006A27F9 /* GameViewController1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController1.xib; path = ../GameViewController1.xib; sourceTree = "<group>"; };
-		59242E861CF435E200D4C903 /* LetterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterCollectionViewCell.h; sourceTree = "<group>"; };
-		59242E871CF435E200D4C903 /* LetterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterCollectionViewCell.m; sourceTree = "<group>"; };
-		59242E881CF435E200D4C903 /* LetterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LetterCollectionViewCell.xib; sourceTree = "<group>"; };
 		59242E8B1CF4587400D4C903 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		59242E8C1CF4587400D4C903 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		5990772E1CF2F0B60057581D /* StudyGameProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyGameProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,9 +77,6 @@
 		599077591CF2FFA90057581D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		5990775A1CF2FFA90057581D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		5990775B1CF2FFA90057581D /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		5990775F1CF3099C0057581D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		599077601CF3099C0057581D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		599077611CF3099C0057581D /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		59B35D011CF550270078B56A /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskManager.h; sourceTree = "<group>"; };
 		59B35D021CF550280078B56A /* TaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskManager.m; sourceTree = "<group>"; };
 		59E112A21CF8456E00E394D7 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -159,15 +149,9 @@
 				599077451CF2F0BF0057581D /* Info.plist */,
 				5990773D1CF2F0BD0057581D /* StudyGameProject.xcdatamodeld */,
 				599077311CF2F0BA0057581D /* Supporting Files */,
-				5990775F1CF3099C0057581D /* GameViewController.h */,
 				591BCC6C1CFC65A0006A27F9 /* GameViewController1.h */,
 				591BCC6D1CFC65A0006A27F9 /* GameViewController1.m */,
 				591BCC6E1CFC65A0006A27F9 /* GameViewController1.xib */,
-				599077601CF3099C0057581D /* GameViewController.m */,
-				599077611CF3099C0057581D /* GameViewController.xib */,
-				59242E861CF435E200D4C903 /* LetterCollectionViewCell.h */,
-				59242E871CF435E200D4C903 /* LetterCollectionViewCell.m */,
-				59242E881CF435E200D4C903 /* LetterCollectionViewCell.xib */,
 				59242E8B1CF4587400D4C903 /* Task.h */,
 				59242E8C1CF4587400D4C903 /* Task.m */,
 				59B35D011CF550270078B56A /* TaskManager.h */,
@@ -290,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				591443121CFDC30A003E8995 /* fail.wav in Resources */,
-				599077631CF3099C0057581D /* GameViewController.xib in Resources */,
 				599077441CF2F0BE0057581D /* LaunchScreen.storyboard in Resources */,
 				591BCC701CFC65A0006A27F9 /* GameViewController1.xib in Resources */,
 				590808001CF6FEB2003536B4 /* Default-568h@2x.png in Resources */,
@@ -299,7 +282,6 @@
 				59E112A31CF8456F00E394D7 /* 1.png in Resources */,
 				590808021CF6FEB2003536B4 /* Default.png in Resources */,
 				591443151CFDC30A003E8995 /* tap.wav in Resources */,
-				59242E8A1CF435E200D4C903 /* LetterCollectionViewCell.xib in Resources */,
 				591443141CFDC30A003E8995 /* success.wav in Resources */,
 				5990775D1CF2FFA90057581D /* MainViewController.xib in Resources */,
 				590808011CF6FEB2003536B4 /* Default-Portrait.png in Resources */,
@@ -322,12 +304,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				59242E8D1CF4587400D4C903 /* Task.m in Sources */,
-				599077621CF3099C0057581D /* GameViewController.m in Sources */,
 				599077361CF2F0BB0057581D /* AppDelegate.m in Sources */,
 				599077331CF2F0BB0057581D /* main.m in Sources */,
 				591BCC6F1CFC65A0006A27F9 /* GameViewController1.m in Sources */,
 				5990773F1CF2F0BD0057581D /* StudyGameProject.xcdatamodeld in Sources */,
-				59242E891CF435E200D4C903 /* LetterCollectionViewCell.m in Sources */,
 				59B35D031CF550280078B56A /* TaskManager.m in Sources */,
 				5990775C1CF2FFA90057581D /* MainViewController.m in Sources */,
 				59015E0D1CF7FC8C0079B215 /* UIColor+ColorFromHex.m in Sources */,

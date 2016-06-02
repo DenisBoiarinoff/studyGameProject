@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//@class GameViewController;
 @class GameViewController1;
 
 @interface MainViewController : UIViewController

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "ViewCellStack.h"
-#import "LetterCollectionViewCell.h"
 
 @interface ViewCellStack ()
 @property (strong) NSMutableArray *data;
@@ -25,7 +24,7 @@
 	return  self;
 }
 
--(void)push:(LetterCollectionViewCell *)anObject
+-(void)push:(id)anObject
 {
 	[self.data addObject:anObject];
 	_count++;

@@ -8,7 +8,6 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 #import "MainViewController.h"
-//#import "GameViewController.h"
 #import "UIColor+ColorFromHex.h"
 #import "GameViewController1.h"
 
@@ -29,51 +28,6 @@
 	CFURLRef soundfileURLRef;
 	soundfileURLRef = CFBundleCopyResourceURL(mainBundle, (CFStringRef) @"tap", CFSTR("wav"), NULL);
 	AudioServicesCreateSystemSoundID(soundfileURLRef,  & _soundId);
-
-//	CGRect screenRect = [[UIScreen mainScreen] bounds];
-//
-//	[self.fontImageView setFrame:screenRect];
-//
-//	CGRect newFrame = self.hawToPlayBtn.frame;
-//
-//	newFrame.size.width = screenRect.size.width - 80;
-//	newFrame.size.height = newFrame.size.width / 5;
-//	newFrame.origin.y = screenRect.size.height / 2 -  newFrame.size.height / 2;
-//	newFrame.origin.x = screenRect.size.width / 2 - newFrame.size.width / 2;
-//	[self.hawToPlayBtn setFrame:newFrame];
-//
-//	newFrame = self.playBtn.frame;
-//	newFrame.size.width = screenRect.size.width - 80;
-//	newFrame.size.height = newFrame.size.width / 5;
-//	newFrame.origin.y = screenRect.size.height / 2 -  newFrame.size.height * 1.5 - 20;
-//	newFrame.origin.x = screenRect.size.width / 2 - newFrame.size.width / 2;
-//	[self.playBtn setFrame:newFrame];
-//
-//	newFrame = self.StoreBtn.frame;
-//	newFrame.size.width = screenRect.size.width - 80;
-//	newFrame.size.height = newFrame.size.width / 5;
-//	newFrame.origin.y = screenRect.size.height / 2 + newFrame.size.height * 0.5 + 20;
-//	newFrame.origin.x = screenRect.size.width / 2 - newFrame.size.width / 2;
-//	[self.StoreBtn setFrame:newFrame];
-//
-//	newFrame = self.titleLabel.frame;
-//	newFrame.origin.y = 25;
-//	newFrame.origin.x = screenRect.size.width / 2 - newFrame.size.width / 2;
-//	[self.titleLabel setFrame:newFrame];
-//
-
-//	[self.navigationController.navigationBar setBackgroundColor:[UIColor colorwithHexString:@"FFFFFF" alpha:.0]];
-
-//	[self setTitle:@"Riddles"];
-//
-//	CAGradientLayer *gradient = [CAGradientLayer layer];
-//	gradient.frame = self.navigationController.navigationBar.bounds;
-//	gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorwithHexString:@"ED540A" alpha:.9] CGColor],
-//					   (id)[[UIColor colorwithHexString:@"FFFF1F" alpha:.9] CGColor], nil];
-//
-//	[self.navigationController.navigationBar.layer insertSublayer:gradient atIndex:0];
-
-	// Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,13 +51,6 @@
 }
 
 - (IBAction)toGameView:(id)sender {
-
-//	if(!self.gameViewController){
-//		GameViewController *secondView = [[GameViewController alloc] init];
-//		self.gameViewController = secondView;
-//	}
-//
-//	[self.navigationController pushViewController:self.gameViewController animated:YES];
 
 	AudioServicesPlaySystemSound(_soundId);
 

@@ -9,7 +9,6 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 #import "GameViewController1.h"
-#import "LetterCollectionViewCell.h"
 #import "Task.h"
 #import "TaskManager.h"
 #import "UIColor+ColorFromHex.h"
@@ -31,7 +30,7 @@
 
 @property (nonatomic, strong) ViewCellStack *cellStack;
 
-@property (nonatomic, strong) UILabel *animationLabel;
+//@property (nonatomic, strong) UILabel *animationLabel;
 
 @end
 
@@ -64,8 +63,8 @@ static NSString *btnHelpImg = @"btn_hint";
 	soundfileURLRef = CFBundleCopyResourceURL(mainBundle, (CFStringRef) @"success", CFSTR("wav"), NULL);
 	AudioServicesCreateSystemSoundID(soundfileURLRef,  & _soundWinId);
 
-	CGRect frameRect = CGRectMake(0, 0, cellSize, cellSize);
-	self.animationLabel = [[UILabel alloc] initWithFrame:frameRect];
+//	CGRect frameRect = CGRectMake(0, 0, cellSize, cellSize);
+//	self.animationLabel = [[UILabel alloc] initWithFrame:frameRect];
 
 //	UIImage *letterImg = [UIImage imageNamed:inputBtnImg];
 //	UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
@@ -80,13 +79,13 @@ static NSString *btnHelpImg = @"btn_hint";
 //
 //	self.animationLabel.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
 
-	[self.animationLabel setText:@"X"];
+//	[self.animationLabel setText:@" "];
 
 //	[self.animationLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
 //	[self.animationLabel setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
 
 //	[self.animationLabel setHidden:YES];
-	[self.view addSubview:self.animationLabel];
+//	[self.view addSubview:self.animationLabel];
 
 	self.cellStack = [[ViewCellStack alloc] init];
 
@@ -279,27 +278,7 @@ static NSString *btnHelpImg = @"btn_hint";
 		frameRect.size.width = cellSize;
 		frameRect.size.height = cellSize;
 
-		UILabel *label = [[UILabel alloc] initWithFrame:frameRect];
-		[label setText:@" "];
-		[label setTag:100 + i];
-		[label setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
-		[label setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
-		[label setTextAlignment:NSTextAlignmentCenter];
-
-		UIImage *letterImg = [UIImage imageNamed:inputBtnImg];
-		UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
-													 scale:letterImg.scale
-											   orientation:UIImageOrientationDownMirrored];
-		CGSize imgSize = label.frame.size;
-
-		UIGraphicsBeginImageContext( imgSize );
-		[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
-		UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
-
-		label.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
-
-		[self.answerView addSubview:label];
+		[self.answerView addSubview:[self getCellWithImg:inputBtnImg frameRect:frameRect text:@" " andTag:100 + i]];
 	}
 }
 
@@ -315,10 +294,6 @@ static NSString *btnHelpImg = @"btn_hint";
 		for (int i = 0; i < (int)(numberOfLetter1 / 2); i++) {
 
 			CGRect frameRect = CGRectMake(5 + i * (cellSize + 10), 5 + j * (cellSize + 10), cellSize, cellSize);
-			UIButton *letter = [[UIButton alloc] initWithFrame:frameRect];
-			[letter setTitle:[self.dataArray objectAtIndex:i + (int)(numberOfLetter1 / 2) * j] forState:UIControlStateNormal];
-			[letter setTag:200 + i + (int)(numberOfLetter1 / 2) * j];
-			[letter setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
 
 			UIImage *letterImg;
 			if (i + (int)(numberOfLetter1 / 2) * j == 15) {
@@ -328,26 +303,13 @@ static NSString *btnHelpImg = @"btn_hint";
 			} else {
 				letterImg = [UIImage imageNamed:selectedLetterBtnImg];
 			}
-			UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
-													 scale:letterImg.scale
-											   orientation:UIImageOrientationDownMirrored];
-			CGSize imgSize = letter.frame.size;
 
-			UIGraphicsBeginImageContext( imgSize );
-			[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
-			UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-			UIGraphicsEndImageContext();
+			UIButton *btn = [self getBtnWithImg:letterImg
+									 frameRect:frameRect
+										 title:[self.dataArray objectAtIndex:i + (int)(numberOfLetter1 / 2) * j]
+										 andTag:200 + i + (int)(numberOfLetter1 / 2) * j];
 
-			letter.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
-
-			[letter setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
-			[letter setTitleColor: [UIColor colorwithHexString:@"091161" alpha:1] forState:UIControlStateNormal];
-
-			[letter addTarget:self
-					   action:@selector(letterBtnPressed:)
-			 forControlEvents:UIControlEventTouchUpInside];
-
-			[self.lettersView addSubview:letter];
+			[self.lettersView addSubview:btn];
 		}
 	}
 
@@ -372,68 +334,57 @@ static NSString *btnHelpImg = @"btn_hint";
 
 - (void) stepBack {
 //	NSLog(@"step back");
+	if ([self.possibleAnswer length] != self.cellStack.count) return;
 	int lastLetterPosition = (int)[self.possibleAnswer length];
 	if (lastLetterPosition > 0) {
 		NSRange range = NSMakeRange(lastLetterPosition - 1, 1);
 		[self.possibleAnswer deleteCharactersInRange:range];
 
-		UILabel *lastFullView = [self.answerView viewWithTag:100 + lastLetterPosition - 1];
+//		UILabel *lastFullView = [self.answerView viewWithTag:99 + lastLetterPosition];
+		UILabel *lastFullView = [self.answerView viewWithTag:99 + self.cellStack.count];
 
 		if (lastFullView) {
-			CGRect startFrame = [self.answerView convertRect:lastFullView.frame toView:self.view];
-			UIButton *letterBtn = [self.cellStack lastObject];
-			CGRect endFrame = [self.lettersView convertRect:letterBtn.frame toView:self.view];
-			[self.animationLabel setFrame:startFrame];
 
-			UIImage *animationLetterImg = [UIImage imageNamed:selectedLetterBtnImg];
-			UIImage *animationLetterImgMirored = [UIImage imageWithCGImage:animationLetterImg.CGImage
-															scale:animationLetterImg.scale
-													  orientation:UIImageOrientationDownMirrored];
+			CGRect animationStartPositionFrame = [self.answerView convertRect:lastFullView.frame toView:self.view];
 
-			//	CGSize imgSize = self.animationLabel.frame.size;
-			CGSize animationImgSize = startFrame.size;
+			UIButton *popedCell = (UIButton *)[self.cellStack pop];
 
-			UIGraphicsBeginImageContext( animationImgSize );
-			[animationLetterImgMirored drawInRect:CGRectMake(0,0,animationImgSize.width, animationImgSize.height)];
-			UIImage* newAnimationImage = UIGraphicsGetImageFromCurrentImageContext();
-			UIGraphicsEndImageContext();
+			CGRect animationEndPositionFrame = [self.lettersView convertRect:popedCell.frame toView:self.view];
 
-			self.animationLabel.layer.backgroundColor = [UIColor colorWithPatternImage:newAnimationImage].CGColor;
+			UILabel *animationLabel = [self getCellWithImg:selectedLetterBtnImg
+												 frameRect:animationStartPositionFrame
+													  text:lastFullView.text
+													andTag:0];
 
-			[self.animationLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
-			[self.animationLabel setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
-
-			//	[self.animationLabel setText:@"X"];
-			[self.animationLabel setText:lastFullView.text];
-			[self.animationLabel setTextAlignment:NSTextAlignmentCenter];
-			[self.animationLabel setHidden:NO];
+			[self.view addSubview:animationLabel];
+			[animationLabel setHidden:NO];
 
 			[lastFullView setText:@" "];
 
-			UIImage *letterImg = [UIImage imageNamed:inputBtnImg];
-			UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
-															scale:letterImg.scale
+			UIImage *inputImg = [UIImage imageNamed:inputBtnImg];
+			UIImage *inputImgMirored = [UIImage imageWithCGImage:inputImg.CGImage
+															scale:inputImg.scale
 													  orientation:UIImageOrientationDownMirrored];
-			CGSize imgSize = lastFullView.frame.size;
+			CGSize inputImgSize = lastFullView.frame.size;
 
-			UIGraphicsBeginImageContext( imgSize );
-			[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+			UIGraphicsBeginImageContext( inputImgSize );
+			[inputImgMirored drawInRect:CGRectMake(0,0,inputImgSize.width,inputImgSize.height)];
 			UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 			UIGraphicsEndImageContext();
 
 			lastFullView.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
 
-			[UIView animateWithDuration:1.f
+			[UIView animateWithDuration:.3f
 								  delay:.1f
-								options:UIViewAnimationCurveEaseInOut
+								options:UIViewAnimationOptionCurveEaseInOut
 							 animations:^{
-								 [self.animationLabel setCenter:CGPointMake(endFrame.origin.x + endFrame.size.width/2,
-																			endFrame.origin.y + endFrame.size.height/2)];
+								 [animationLabel setCenter:CGPointMake(animationEndPositionFrame.origin.x + animationEndPositionFrame.size.width/2,
+																	   animationEndPositionFrame.origin.y + animationEndPositionFrame.size.height/2)];
 							 }
 							 completion:^(BOOL finished){
-								 UIButton *popCell = (UIButton *)[self.cellStack pop];
-								 [popCell setHidden:NO];
-								 [self.animationLabel setHidden:YES];
+								 [popedCell setHidden:NO];
+								 [animationLabel setHidden:YES];
+								 [animationLabel removeFromSuperview];
 							 }
 			 ];
 
@@ -462,62 +413,43 @@ static NSString *btnHelpImg = @"btn_hint";
 
 - (void) letterSelected:(int) letterIndex
 {
-//	NSLog(@"Selected letter with iondex %d", letterIndex);
 	UIButton *btn = (UIButton *)[self.lettersView viewWithTag:letterIndex];
 
 	[self.cellStack push:btn];
 
 	NSMutableString *selectedLetter = [[NSMutableString alloc] initWithString:[btn.titleLabel text]];
-	self.possibleAnswer = [[self.possibleAnswer  stringByAppendingString:selectedLetter] mutableCopy];
+//	self.possibleAnswer = [[self.possibleAnswer  stringByAppendingString:selectedLetter] mutableCopy];
 
-	CGRect startFrame = [self.lettersView convertRect:btn.frame toView:self.view];
-/*for future replace*/
-	NSInteger currentLength = [self.possibleAnswer length];
-	UILabel *lastClearLabel = [self.answerView viewWithTag:99 + currentLength];
-/*--*/
-	CGRect endFrame = [self.answerView convertRect:lastClearLabel.frame toView:self.view];
+	CGRect animationStartPositionFrame = [self.lettersView convertRect:btn.frame toView:self.view];
 
-//	[self.animationLabel setText:selectedLetter];
-	[self.animationLabel setFrame:startFrame];
+//	NSInteger currentLength = [self.possibleAnswer length];
+	UILabel *lastClearLabel = [self.answerView viewWithTag:99 + (int)self.cellStack.count];
 
-//	[self.animationLabel setBackgroundColor:[UIColor redColor]];
-//	self.animationLabel.layer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:selectedLetterBtnImg]].CGColor;
+	CGRect animationEndPositionFrame = [self.answerView convertRect:lastClearLabel.frame toView:self.view];
 
-	UIImage *letterImg = [UIImage imageNamed:selectedLetterBtnImg];
-	UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
-													scale:letterImg.scale
-											  orientation:UIImageOrientationDownMirrored];
+	UILabel *animationLabel = [self getCellWithImg:selectedLetterBtnImg
+										 frameRect:animationStartPositionFrame
+											  text:selectedLetter
+											andTag:0];
 
-//	CGSize imgSize = self.animationLabel.frame.size;
-	CGSize imgSize = startFrame.size;
+	[self.view addSubview:animationLabel];
 
-	UIGraphicsBeginImageContext( imgSize );
-	[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
-	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-
-	self.animationLabel.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
-
-	[self.animationLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
-	[self.animationLabel setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
-
-//	[self.animationLabel setText:@"X"];
-	[self.animationLabel setText:selectedLetter];
-	[self.animationLabel setTextAlignment:NSTextAlignmentCenter];
-	[self.animationLabel setHidden:NO];
+	[animationLabel setHidden:NO];
 
 	[btn setHidden:YES];
 
 	[UIView animateWithDuration:1.f
 						  delay:.1f
-						options:UIViewAnimationCurveEaseInOut
+						options:UIViewAnimationOptionCurveEaseInOut
 					 animations:^{
-						 [self.animationLabel setCenter:CGPointMake(endFrame.origin.x + endFrame.size.width/2,
-																	endFrame.origin.y + endFrame.size.height/2)];
+						 [animationLabel setCenter:CGPointMake(animationEndPositionFrame.origin.x + animationEndPositionFrame.size.width/2,
+															   animationEndPositionFrame.origin.y + animationEndPositionFrame.size.height/2)];
 					 }
 					 completion:^(BOOL finished){
-						 [self.animationLabel setHidden:YES];
+						 [animationLabel setHidden:YES];
+						 self.possibleAnswer = [[self.possibleAnswer  stringByAppendingString:selectedLetter] mutableCopy];
 						 [self answerStringIsChanged];
+						 [animationLabel removeFromSuperview];
 					 }
 	 ];
 
@@ -528,6 +460,23 @@ static NSString *btnHelpImg = @"btn_hint";
 	NSInteger currentLength = [self.possibleAnswer length];
 	NSInteger answerLength = [self.currentTask.answer length];
 
+//	UILabel *label = [self.answerView viewWithTag: 99 + currentLength];
+//
+//	[label setText:[NSString stringWithFormat:@"%c", [self.possibleAnswer characterAtIndex:currentLength - 1]]];
+//
+//	UIImage *letterImg = [UIImage imageNamed:selectedLetterBtnImg];
+//	UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
+//													scale:letterImg.scale
+//											  orientation:UIImageOrientationDownMirrored];
+//	CGSize imgSize = label.frame.size;
+//
+//	UIGraphicsBeginImageContext( imgSize );
+//	[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+//	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+//	UIGraphicsEndImageContext();
+//
+//	label.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
+/*---------------------------------------------------------------------------------------------*/
 	for(int i = 0; i < answerLength; i++) {
 		UILabel *label = [self.answerView viewWithTag:100 + i];
 		if(label) {
@@ -577,6 +526,63 @@ static NSString *btnHelpImg = @"btn_hint";
 	}
 }
 
+- (UILabel *) getCellWithImg:(NSString *)imgName frameRect:(CGRect)frame text:(NSString *)text andTag:(int)tag
+{
+	UILabel *label = [[UILabel alloc] initWithFrame:frame];
+	[label setText:@" "];
+	[label setTag:tag];
+	[label setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
+	[label setTextColor:[UIColor colorwithHexString:@"091161" alpha:1]];
+	[label setTextAlignment:NSTextAlignmentCenter];
 
+	UIImage *letterImg = [UIImage imageNamed:imgName];
+	UIImage *letterImgMirored = [UIImage imageWithCGImage:letterImg.CGImage
+													scale:letterImg.scale
+											  orientation:UIImageOrientationDownMirrored];
+	CGSize imgSize = label.frame.size;
+
+	UIGraphicsBeginImageContext( imgSize );
+	[letterImgMirored drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+
+	label.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
+	[label setText:text];
+
+	return label;
+}
+
+-(UIButton *) getBtnWithImg:(UIImage *)img frameRect:(CGRect)frame title:(NSString *)title andTag:(int)tag
+{
+	UIButton *letter = [[UIButton alloc] initWithFrame:frame];
+
+	[letter setTitle:title
+			forState:UIControlStateNormal];
+	[letter setTag:tag];
+	[letter setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+
+
+	UIImage *letterImgMirored = [UIImage imageWithCGImage:img.CGImage
+													scale:img.scale
+											  orientation:UIImageOrientationDownMirrored];
+	CGSize letterImgSize = letter.frame.size;
+
+	UIGraphicsBeginImageContext( letterImgSize );
+	[letterImgMirored drawInRect:CGRectMake(0, 0, letterImgSize.width, letterImgSize.height)];
+	//			[letterImg drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+
+	letter.layer.backgroundColor = [UIColor colorWithPatternImage:newImage].CGColor;
+
+	[letter setFont:[UIFont fontWithName:@"Arial-BoldMT" size:cellFontSize]];
+	[letter setTitleColor: [UIColor colorwithHexString:@"091161" alpha:1] forState:UIControlStateNormal];
+
+	[letter addTarget:self
+			   action:@selector(letterBtnPressed:)
+	 forControlEvents:UIControlEventTouchUpInside];
+
+	return letter;
+}
 
 @end
