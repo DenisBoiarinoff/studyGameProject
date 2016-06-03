@@ -86,7 +86,6 @@ NSMutableString *headerText;
 		[self.dataArray addObject:@"0"];
 	}
 
-//	tuskNum = 1;
 	tuskNum = 0;
 	headerText = [[NSMutableString alloc] initWithString:@"Task # "];
 
@@ -157,7 +156,6 @@ NSMutableString *headerText;
 	UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Next Level"
 														  style:UIAlertActionStyleDefault
 														handler:^(UIAlertAction * action) {
-//															tuskNum = tuskNum + 1;
 															[self reloadTask];
 															int newCoins = [self.coins intValue] + taskCoast1;
 															self.coins = [NSNumber numberWithInt:newCoins];
@@ -214,7 +212,6 @@ NSMutableString *headerText;
 	[headerText replaceCharactersInRange:NSMakeRange([headerText length] - 1, 1)
 							  withString:[NSString stringWithFormat:@"%d",tuskNum]];
 
-//	[self.titleLabel setText:self.currentTask.question];
 	[self.titleLabel setText:headerText];
 
 	[self.questionLabel setText:self.currentTask.question];
@@ -409,7 +406,14 @@ NSMutableString *headerText;
 {
 	UIButton *btn = (UIButton *)[self.lettersView viewWithTag:letterIndex];
 
+	if ([self.cellStack count] >= [self.currentTask.answer length]) return;
+
 	[self.cellStack push:btn];
+
+//	if ([self.cellStack count] > [self.possibleAnswer length]) {
+//		[self.cellStack pop];
+//		return;
+//	}
 
 	NSMutableString *selectedLetter = [[NSMutableString alloc] initWithString:[btn.titleLabel text]];
 //	self.possibleAnswer = [[self.possibleAnswer  stringByAppendingString:selectedLetter] mutableCopy];
